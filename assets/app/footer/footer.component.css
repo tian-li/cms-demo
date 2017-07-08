@@ -1,0 +1,30 @@
+footer {
+  background-color: #fafafa;
+  color: #aaa;
+}
+
+.footer-nav {
+  list-style: none;
+  text-align: center;
+}
+
+.footer-nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited {
+  font-size: 80%;
+  color: #aaa;
+  text-decoration: none;
+
+}
+
+.copyright {
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 70%;
+  text-align: center
+}

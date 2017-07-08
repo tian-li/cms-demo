@@ -1,0 +1,54 @@
+
+
+.gallary-item {
+  position: relative;
+  width:100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  backface-visibility: hidden;
+}
+
+.gallary-item img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallary-item:hover .overlay {
+  background-color: rgba(50,50,50,0.3);
+}
+
+.gallary-item:hover .text{
+  opacity: 1;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 99%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  transition: .5s ease;
+  background-color: rgba(50,50,50,0);
+}
+
+.text{
+  width: 100%;
+  opacity: 0;
+  color: #fff;
+  transition: .5s ease;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text i {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 5px;
+}

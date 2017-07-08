@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+
+<section class="gallary-container">
+  <div class="row">
+    <h2>Gallary</h2>
+  </div>
+  <div class="row">
+    <div class="col span-1-of-3" *ngFor=" let g of gallary; let i = index ">
+      <div class="gallary-item">
+       <img src="{{g.imagePath}}" alt="{{g.title}}">
+       <div class="overlay">
+         <div class="text">
+           <i class="ion-ios-heart"></i>23
+           <i class="ion-ios-chatboxes"></i>13
+         </div>
+       </div>
+       </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
