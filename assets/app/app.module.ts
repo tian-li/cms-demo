@@ -21,6 +21,7 @@ import { LoginComponent } from './admin/login/login.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { GallaryComponent } from './gallary/gallary.component';
+import { GallaryDetailComponent } from './gallary/gallary-detail/gallary-detail.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
     AboutComponent,
     HomeComponent,
     GallaryComponent,
+    GallaryDetailComponent,
     FooterComponent
   ],
   imports: [

@@ -7,6 +7,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   shouldStick = false;
+  
   constructor(zone: NgZone) {
     window.onscroll = () => {
       zone.run(() => {
