@@ -2,6 +2,16 @@ header {
   background-color: #222;
 }
 
+.logo:link,
+.logo:visited {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 110%;
+  float: left;
+  margin:20px 20px;
+}
+
 .main-nav {
   height: 100%;
   float:right;
@@ -24,3 +34,26 @@ header {
   border-bottom: 2px solid transparent;
   transition: color 0.2s;
 }
+
+/* sticky nav */
+.sticky {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  background-color: rgba(255,255,255, 0.9);
+  -webkit-box-shadow: 0 2px 2px #efefef;
+          box-shadow: 0 2px 2px #efefef;
+  z-index: 9999;
+}
+
+.sticky .main-nav { margin-top: 18px; }
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+  padding: 16px 0;
+  color: #555;
+}
+
+.sticky .logo { display: none; }
+.sticky .logo-black { display: block; }

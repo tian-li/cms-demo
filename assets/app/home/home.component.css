@@ -1,17 +1,24 @@
-header{
+.hero-box {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/hero.jpg);
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/resources/css/img/hero.jpg);
   background-size: cover; 
   background-position: center;
-  height:100vh; 
+  height:100vh; /* 100% of viewport */
+  background-attachment: fixed;
+}
+
+.hero-text-box{
+  position: absolute;
+  width: 1140px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 /* -------------------------- */
 /* Blog List*/
 /* -------------------------- */
-.section-blog a:link,
-.section-blog a:visited{
-  color: #555;
-}
 
 
 
@@ -22,12 +29,6 @@ header{
 .section-gallary{
   background-color: #f4f4f4;
   padding-bottom: 0;
-}
-
-
-.section-gallary a:link,
-.section-gallary a:visited{
-  color: #555;
 }
 
 .gallary-showcase {
@@ -43,8 +44,3 @@ header{
 /* -------------------------- */
 /* About */
 /* -------------------------- */
-
-.section-about-me a:link,
-.section-about-me a:visited{
-  color: #555;
-}
