@@ -3,9 +3,9 @@
     <div class="row nav-row">
       <a class="logo" routerLinkActive="active" routerLink="/home">CMS</a>
       <ul class="main-nav">
-        <li><a routerLinkActive="active" routerLink="/blog">Blog</a></li>
-        <li><a routerLinkActive="active" routerLink="/gallary">Gallary</a></li>
-        <li><a routerLinkActive="active" routerLink="/about">About Me</a></li>
+        <li><a routerLink="/home" fragment="blog">Blog1</a></li>
+        <li><a routerLink="/home" fragment="gallary">Gallary</a></li>
+        <li><a routerLink="/home" fragment="about">About Me</a></li>
       </ul>
     </div>
     <div class="hero-text-box">
@@ -13,9 +13,9 @@
     </div>
   </nav>
 </header>
-<section class="section-blog">
+<section class="section-blog" id="blog">
   <div class="row">
-    <h2>BLOGS</h2>
+    <h2><a routerLink="/blog">BLOGS</a></h2>
   </div>
   <div class="row">
     <div class="col span-1-of-3" *ngFor=" let blog of blogs; let i = index ">
@@ -32,9 +32,9 @@
     </div>
   </div>
 </section>
-<section class="section-gallary clearfix">
+<section class="section-gallary clearfix" id="gallary">
   <div class="row">
-    <h2>GALLARY</h2>
+    <h2><a routerLink="/gallary">GALLARY</a></h2>
   </div>
   <ul class="gallary-showcase clearfix">
     <li *ngFor=" let g of gallary; let i = index ">
@@ -50,9 +50,9 @@
     </li>
   </ul>
 </section>
-<section class="section-about-me">
+<section class="section-about-me" id="about">
   <div class="row">
-    <h2>About Me</h2>
+    <h2><a routerLink="/about">About Me</a></h2>
   </div>
   <div class="row">
     <div class="col span-1-of-3">

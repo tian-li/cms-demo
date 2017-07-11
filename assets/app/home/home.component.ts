@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { BlogsService } from '../blogs/blogs.service';
 import { Blog } from '../models/blog.model';
@@ -16,14 +17,25 @@ export class HomeComponent implements OnInit {
   blogs: Blog[];
   gallary: Gallary[];
 
-  constructor(private blogsService: BlogsService,
-    private gallaryService: GallaryService) { }
+  constructor(
+    private blogsService: BlogsService,
+    private gallaryService: GallaryService,
+    private route:ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.blogs = this.blogsService.getBlogs();
     this.blogs = this.blogs.slice(0,3);
     this.gallary = this.gallaryService.getGallary();
-    console.log(this.gallary);
+    
+    this.route.fragment.subscribe(
+      f => {
+        const element = document.querySelector("#" + f);
+        if(element){
+          element.scrollIntoView(element);
+        }
+      });
+
   }
 
 }

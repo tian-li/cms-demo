@@ -8,13 +8,26 @@ header{
 /* -------------------------- */
 /* Blog List*/
 /* -------------------------- */
+.section-blog a:link,
+.section-blog a:visited{
+  color: #555;
+}
+
+
 
 /* -------------------------- */
 /* Gallary Section*/
 /* -------------------------- */
+
 .section-gallary{
   background-color: #f4f4f4;
   padding-bottom: 0;
+}
+
+
+.section-gallary a:link,
+.section-gallary a:visited{
+  color: #555;
 }
 
 .gallary-showcase {
@@ -25,4 +38,13 @@ header{
   display: block;
   float:left;
   width:25%;
+}
+
+/* -------------------------- */
+/* About */
+/* -------------------------- */
+
+.section-about-me a:link,
+.section-about-me a:visited{
+  color: #555;
 }

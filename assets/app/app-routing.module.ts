@@ -19,6 +19,7 @@ const appRoutes: Routes = [
   { path: 'gallary', component: GallaryComponent},
   { path: 'blog', component: BlogListComponent },
   { path: 'blog/:id', component: BlogFullComponent },
+  { path: 'blog/**', redirectTo:'/blog'},
   {path: 'admin', 
     component: AdminComponent, children:[
     {path: '', redirectTo:'new', pathMatch: 'full'},

@@ -84,6 +84,15 @@ h3 {
   margin-bottom: 15px;
 }
 
+a {
+  cursor: pointer;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
 .hero-text-box {
   position: absolute;
   width: 1140px;
