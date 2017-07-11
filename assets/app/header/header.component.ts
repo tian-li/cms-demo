@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, NgZone } from '@angular/core';
 
 @Component({
@@ -8,7 +9,9 @@ import { Component, OnInit, NgZone } from '@angular/core';
 export class HeaderComponent implements OnInit {
   shouldStick = false;
   
-  constructor(zone: NgZone) {
+  constructor(zone: NgZone,
+    private route:ActivatedRoute
+    ) {
     window.onscroll = () => {
       zone.run(() => {
         if(window.pageYOffset>200) {
@@ -21,7 +24,7 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit() {
-
+    
   }
 
 }

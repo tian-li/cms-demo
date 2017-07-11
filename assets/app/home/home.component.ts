@@ -27,14 +27,6 @@ export class HomeComponent implements OnInit {
     this.blogs = this.blogsService.getBlogs();
     this.blogs = this.blogs.slice(0,3);
     this.gallary = this.gallaryService.getGallary();
-    
-    this.route.fragment.subscribe(
-      f => {
-        const element = document.querySelector("#" + f);
-        if(element){
-          element.scrollIntoView(element);
-        }
-      });
 
   }
 
