@@ -1,0 +1,58 @@
+<div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+      <label for="title">Title:</label>
+      <input 
+        type="text" 
+        id="title" 
+        [ngModel]="gallary?.title" 
+        name="title" 
+        required>
+    </div>
+    <div class="row">
+      <label for="date">date:</label>
+      <input 
+        type="text" 
+        id="date" 
+        [ngModel]="gallary?.date" 
+        name="date" 
+        required>
+    </div>
+    <div class="row">
+      <label for="city">City:</label>
+      <input 
+        type="text" 
+        id="city" 
+        [ngModel]="gallary?.city" 
+        name="city" 
+        required>
+        <label for="state">State:</label>
+      <input 
+        type="text" 
+        id="state" 
+        [ngModel]="gallary?.state" 
+        name="state" 
+        required>
+    </div>
+    <div class="row">
+      <label for="thumb">ImageUrl(Thumb):</label>
+      <input 
+        type="text" 
+        id="thumb" 
+        [ngModel]="gallary?.thumb" 
+        name="thumb" 
+        required>
+        <label for="full">ImageUrl(Full):</label>
+      <input 
+        type="text" 
+        id="full" 
+        [ngModel]="gallary?.full" 
+        name="full" 
+        required>
+    </div>
+    <div class="row">
+      <button type="button" (click)="onClear(f)">Clear</button>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</div>

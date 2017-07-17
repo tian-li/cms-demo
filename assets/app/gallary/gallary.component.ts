@@ -10,10 +10,16 @@ import { Gallary } from '../models/gallary.model';
 })
 export class GallaryComponent implements OnInit {
   gallary: Gallary[];
+  
   constructor(private gallaryService: GallaryService) { }
 
   ngOnInit() {
-    this.gallary = this.gallaryService.getGallary();
+    this.gallaryService.getGallary()
+        .subscribe(
+          (gallary:Gallary[]) => {
+            this.gallary = gallary;
+            console.log(this.gallary);
+          });
   }
 
 }

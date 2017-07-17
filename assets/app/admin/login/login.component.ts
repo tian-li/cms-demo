@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.adminService.logIn();
     console.log(this.adminService.loggedIn);
-    this.router.navigate(['../new'], {relativeTo:this.route});
+    this.router.navigate(['../new-blog'], {relativeTo:this.route});
   }
 
 }

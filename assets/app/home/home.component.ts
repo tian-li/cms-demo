@@ -24,15 +24,20 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    //this.blogs = this.blogsService.getBlogs();
-    
-    //this.gallary = this.gallaryService.getGallary();
 
     this.blogsService.getBlogs()
         .subscribe(
           (blogs:Blog[]) => {
             this.blogs = blogs;
+            console.log(blogs);
             this.blogs = this.blogs.slice(0,3);
+          });
+
+    this.gallaryService.getGallary()
+        .subscribe(
+          (gallary:Gallary[]) => {
+            this.gallary = gallary;
+            this.gallary = this.gallary.slice(0,8);
           });
   }
 

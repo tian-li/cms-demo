@@ -5,13 +5,16 @@ export class Gallary {
     city:string,
     state: string
   }
-  public imagePath: string;
+  public imageUrl: {
+    thumb:string,
+    full:string
+  };
 
   constructor(title: string, date:string, location:{city:string,
-    state: string}, imagePath: string){
+    state: string}, imageUrl: {thumb:string, full:string}){
     this.title=title;
     this.date=date;
     this.location = location;
-    this.imagePath = imagePath;
+    this.imageUrl = imageUrl;
   }
 }

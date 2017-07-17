@@ -29,7 +29,7 @@
   <ul class="gallary-showcase clearfix">
     <li *ngFor=" let g of gallary; let i = index ">
       <figure class="gallary-photo">
-        <img src="{{g.imagePath}}" alt="{{g.title}}">
+        <img src="{{g.imageUrl.thumb}}" alt="{{g.title}}">
         <div class="overlay">
           <div class="text">
             <p class="g-title">{{g.title}}</p>

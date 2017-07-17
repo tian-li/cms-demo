@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var blogRoutes = require('./routes/blog');
+var gallaryRoutes = require('./routes/gallary');
 
 var app = express();
 mongoose.connect('localhost:27017/cms');
@@ -32,6 +33,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/blog', blogRoutes);
+app.use('/gallary', gallaryRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler

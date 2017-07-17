@@ -17,6 +17,8 @@ import {AdminGuard} from './shared/admin-guard.service';
 
 import { AdminComponent } from './admin/admin.component';
 import { NewBlogComponent } from './admin/new-blog/new-blog.component';
+import { NewGallaryComponent } from './admin/new-gallary/new-gallary.component';
+
 import { LoginComponent } from './admin/login/login.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
@@ -32,6 +34,7 @@ import { FooterComponent } from './footer/footer.component';
     BlogFullComponent,
     AdminComponent,
     NewBlogComponent,
+    NewGallaryComponent,
     LoginComponent,
     AboutComponent,
     HomeComponent,
