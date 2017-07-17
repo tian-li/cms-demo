@@ -13,7 +13,7 @@ private blogs: Blog[] = [];
 constructor(private http: Http){}
 
   getBlogs() {
-    return this.http.get('http://localhost:3000/blog')
+    return this.http.get('http://localhost:3000/blogs')
       .map((response:Response) => {
         const blogs = response.json().obj;
         let transformedBlogs:Blog[]=[];
@@ -47,7 +47,7 @@ constructor(private http: Http){}
     console.log(body);
     const headers = new Headers({'Content-Type':'application/json'});
 
-    return this.http.post('http://localhost:3000/blog', body, {headers:headers})
+    return this.http.post('http://localhost:3000/blogs', body, {headers:headers})
       .map((response:Response) => {
         console.log("response");
         console.log(response);

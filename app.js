@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
-var blogRoutes = require('./routes/blog');
-var gallaryRoutes = require('./routes/gallary');
+var blogRoutes = require('./routes/blogs');
+var gallaryRoutes = require('./routes/gallaries');
 
 var app = express();
 mongoose.connect('localhost:27017/cms');
@@ -32,13 +32,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/blog', blogRoutes);
-app.use('/gallary', gallaryRoutes);
+app.use('/blogs', blogRoutes);
+app.use('/gallaries', gallaryRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res.render('index');
+  return res.render('index');
 });
 
 module.exports = app;
