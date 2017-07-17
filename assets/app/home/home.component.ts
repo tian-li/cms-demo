@@ -24,10 +24,16 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.blogs = this.blogsService.getBlogs();
-    this.blogs = this.blogs.slice(0,3);
-    this.gallary = this.gallaryService.getGallary();
+    //this.blogs = this.blogsService.getBlogs();
+    
+    //this.gallary = this.gallaryService.getGallary();
 
+    this.blogsService.getBlogs()
+        .subscribe(
+          (blogs:Blog[]) => {
+            this.blogs = blogs;
+            this.blogs = this.blogs.slice(0,3);
+          });
   }
 
 }

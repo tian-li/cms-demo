@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{Router, ActivatedRoute} from '@angular/router';
+import { NgForm } from "@angular/forms";
 
 import {BlogsService} from '../../blogs/blogs.service';
 import { Blog } from '../../models/blog.model';
@@ -11,29 +12,35 @@ import { Blog } from '../../models/blog.model';
 })
 export class NewBlogComponent implements OnInit {
   blog: Blog;
-  blogTitle = '';
-  blogSummary = '';
-  blogContent = '';
-  blogImagePath = '';
+  
 
-  constructor(private blService: BlogsService,
+  constructor(private blogService: BlogsService,
               private router: Router,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    // if(!this.adminService.isLoggedIn()){
-    //   this.router.navigate(['../login'], {relativeTo: this.route});
-    //   console.log(this.route.url);
-    // }
+  onSubmit(form:NgForm) {
+    const blog = new Blog(
+      form.value.title,
+      form.value.summary,
+      form.value.content,
+      form.value.imageUrl,
+      );
+    this.blogService.newBlog(blog)
+      .subscribe(
+        data => console.log(data));
+    form.resetForm;
   }
 
-  onNewBlog(){
-    this.blog = new Blog(this.blogTitle, this.blogSummary,this.blogContent,this.blogImagePath);
-    this.blService.newBlog(this.blog);
-    // let blogs: Blog[] = this.blService.getBlogs()
-    // console.log(blogs);
-  }
+  onClear(form: NgForm) {
+        this.blog = null;
+        form.resetForm();
+    }
 
+    ngOnInit() {
+        // this.blogService.messageIsEdit.subscribe(
+        //     (message: Message) => this.message = message
+        // );
+    }
 
 
 }

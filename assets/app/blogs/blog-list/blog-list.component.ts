@@ -15,7 +15,12 @@ export class BlogListComponent implements OnInit {
   constructor(private blogsService: BlogsService) { }
 
   ngOnInit() {
-    this.blogs = this.blogsService.getBlogs();
+    this.blogsService.getBlogs()
+        .subscribe(
+          (blogs:Blog[]) => {
+            this.blogs = blogs;
+            
+          });
     // console.log(this.blogs);
   }
 
