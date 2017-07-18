@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col span-1-of-3" *ngFor=" let g of gallary; let i = index ">
       <div class="gallary-item">
-       <img src="{{g.imageUrl.full}}" alt="{{g.title}}">
+       <img src="{{g.thumb}}" alt="{{g.title}}">
        <a [routerLink]="'../gallary/'+i"><div class="overlay">
          <div class="text">
            <i class="ion-ios-heart"></i>23

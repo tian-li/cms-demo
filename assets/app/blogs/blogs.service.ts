@@ -18,7 +18,10 @@ constructor(private http: Http){}
         const blogs = response.json().obj;
         let transformedBlogs:Blog[]=[];
         for(let blog of blogs) {
+          // console.log("received blog");
+          // console.log(blog);
           transformedBlogs.push(new Blog(
+              blog._id,
               blog.title,
               blog.summary,
               blog.content,
@@ -26,16 +29,25 @@ constructor(private http: Http){}
             ));
         }
         this.blogs = transformedBlogs;
-        console.log(this.blogs);
+        //console.log(this.blogs);
         return transformedBlogs;
       })
       .catch((error: Response) => {
-        return Observable.throw("error when get");
+        return Observable.throw(error);
       });
   }
 
   getBlog(id: number){
-    return this.blogs[id];
+    //return this.blogs[id];
+
+    return this.http.get('http://localhost:3000/blogs/'+id)
+      .map((response:Response) => {
+        return response.json().obj;
+      })
+      .catch((error:Response) => {
+        return Observable.throw("error when get one blog");
+
+      });
   }
 
   newBlog(blog: Blog){
@@ -56,12 +68,13 @@ constructor(private http: Http){}
 
         console.log("result");
         console.log(result);
-        
+        let id:string = result.boj._id;
         const blog = new Blog(
           result.obj.title,
           result.obj.summary,
           result.obj.content,
-          result.obj.imageUrl
+          result.obj.imageUrl,
+          id
           );
         this.blogs.push(blog);
         return blog;

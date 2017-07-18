@@ -23,11 +23,16 @@ export class BlogFullComponent implements OnInit {
     .subscribe(
       (params: Params) => {
         this.id = params['id'];
-        this.blog = this.blService.getBlog(this.id);
-      }
-    );
+        this.blService.getBlog(this.id)
+          .subscribe(
+            (blog:Blog) => {
+              this.blog = blog;
 
-    console.log(this.blog);
+              console.warn(this.blog);
+            });
+      });
+
+    
   }
 
 }

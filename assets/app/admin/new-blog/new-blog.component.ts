@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{Router, ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from "@angular/forms";
 
 import {BlogsService} from '../../blogs/blogs.service';

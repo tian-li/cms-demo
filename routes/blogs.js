@@ -25,6 +25,29 @@ router.get('/', function(req, res, next) {
       });
 });
 
+router.get('/:id', function(req, res, next) {
+  Blog.findById(req.params.id, function(err, blog) {
+    if(err) {
+      return res.status(500).json({
+            title: 'An error occurred',
+            error: err
+      });
+    }
+
+    if(!blog) {
+      return res.status(500).json({
+        title: 'No blog found',
+        error: {message:'blog not found'}
+      });
+    }
+
+    res.status(200).json({
+        message:'Success',
+        obj:blog
+    });
+  });
+});
+
 router.post('/', function(req, res, next) {
   var blog = new Blog({
     title:req.body.title,

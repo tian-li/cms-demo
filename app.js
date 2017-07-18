@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cloudinary = require('cloudinary');
 
 var appRoutes = require('./routes/app');
 var blogRoutes = require('./routes/blogs');
@@ -12,6 +13,11 @@ var gallaryRoutes = require('./routes/gallaries');
 
 var app = express();
 mongoose.connect('localhost:27017/cms');
+cloudinary.config({ 
+  cloud_name: 'dho1fmz51', 
+  api_key: '973987834418476', 
+  api_secret: 'cxIGZPkSVmjlELWuicbe0T8DRQU' 
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

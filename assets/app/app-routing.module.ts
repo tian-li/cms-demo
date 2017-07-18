@@ -27,8 +27,8 @@ const appRoutes: Routes = [
     component: AdminComponent, children:[
     {path: '', redirectTo:'new-blog', pathMatch: 'full'},
     {path: 'login', component:LoginComponent},
-    {path: 'new-blog', component:NewBlogComponent},
-    {path: 'new-gallary', component:NewGallaryComponent}
+    {path: 'new-blog', component:NewBlogComponent, canActivate: [AdminGuard]},
+    {path: 'new-gallary', component:NewGallaryComponent, canActivate: [AdminGuard]}
 
   ]},
   { path: 'about', component: AboutComponent},

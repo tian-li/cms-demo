@@ -20,8 +20,10 @@ export class GallaryService {
           transformedGallary.push(new Gallary(
               g.title,
               g.date,
-              g.location,
-              g.imageUrl
+              g.city,
+              g.state,
+              g.thumb,
+              g.full
             ));
         }
         this.gallary = transformedGallary;
@@ -54,8 +56,10 @@ export class GallaryService {
         const gallary = new Gallary(
           result.obj.title,
           result.obj.date,
-          result.obj.location,
-          result.obj.imageUrl
+          result.obj.city,
+          result.obj.state,
+          result.obj.thumb,
+          result.obj.full
           );
         this.gallary.push(gallary);
         return gallary;

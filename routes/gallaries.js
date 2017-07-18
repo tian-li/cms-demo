@@ -29,8 +29,10 @@ router.post('/', function(req, res, next) {
   var gallary = new Gallary({
     title:req.body.title,
     date:req.body.date,
-    location:req.body.location,
-    imageUrl:req.body.imageUrl
+    city:req.body.city,
+    state:req.body.state,
+    thumb:req.body.thumb,
+    full:req.body.full
   });
   console.log("gallary route");
   console.log(gallary);
