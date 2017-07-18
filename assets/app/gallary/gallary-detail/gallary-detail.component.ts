@@ -24,11 +24,13 @@ export class GallaryDetailComponent implements OnInit {
     .subscribe(
       (params: Params) => {
         this.id = params['id'];
-        this.photo = this.glyService.getPhoto(this.id);
-      }
-    );
-
-    console.log(this.photo);
+        this.glyService.getPhoto(this.id)
+          .subscribe(
+            (photo:Gallary) => {
+              this.photo = photo;
+              console.log(this.photo);
+            });
+      });
   }
 
 }

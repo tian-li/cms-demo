@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
     });
 
     // scroll to anchor
-    this.router.events.subscribe(s => {
+    /*this.router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
         const tree = this.router.parseUrl(this.router.url);
         if (tree.fragment) {
@@ -43,6 +43,6 @@ export class AppComponent implements OnInit{
           }
         }
       }
-    });
+    });*/
   }
 }

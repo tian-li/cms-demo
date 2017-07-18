@@ -21,15 +21,15 @@ constructor(private http: Http){}
           // console.log("received blog");
           // console.log(blog);
           transformedBlogs.push(new Blog(
-              blog._id,
               blog.title,
               blog.summary,
               blog.content,
-              blog.imageUrl
+              blog.imageUrl,
+              blog._id
             ));
         }
         this.blogs = transformedBlogs;
-        //console.log(this.blogs);
+        console.log(this.blogs);
         return transformedBlogs;
       })
       .catch((error: Response) => {

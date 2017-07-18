@@ -19,7 +19,7 @@ export class BlogListComponent implements OnInit {
         .subscribe(
           (blogs:Blog[]) => {
             this.blogs = blogs;
-            console.log(this.blogs);
+            //console.log(this.blogs);
           });
     
   }

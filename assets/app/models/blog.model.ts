@@ -7,10 +7,11 @@ export class Blog {
   public id?: string;
 
   constructor(title: string, summary: string, content: string, imageUrl: string,id?:string){
-    this.id=id;
+    
     this.title=title;
     this.summary = summary;
     this.content = content;
     this.imageUrl = imageUrl;
+    this.id=id;
   }
 }

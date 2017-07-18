@@ -25,6 +25,29 @@ router.get('/', function(req, res, next) {
       });
 });
 
+router.get('/:id', function(req, res, next) {
+  Gallary.findById(req.params.id, function(err, gallary) {
+    if(err) {
+      return res.status(500).json({
+            title: 'An error occurred',
+            error: err
+      });
+    }
+
+    if(!gallary) {
+      return res.status(500).json({
+        title: 'No blog found',
+        error: {message:'blog not found'}
+      });
+    }
+
+    res.status(200).json({
+        message:'Success',
+        obj:gallary
+    });
+  });
+});
+
 router.post('/', function(req, res, next) {
   var gallary = new Gallary({
     title:req.body.title,

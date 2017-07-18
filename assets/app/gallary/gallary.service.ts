@@ -23,11 +23,12 @@ export class GallaryService {
               g.city,
               g.state,
               g.thumb,
-              g.full
+              g.full,
+              g._id
             ));
         }
         this.gallary = transformedGallary;
-        console.log(this.gallary);
+        //console.log(this.gallary);
         return transformedGallary;
       })
       .catch((error: Response) => {
@@ -36,7 +37,14 @@ export class GallaryService {
   }
 
   getPhoto(id: number){
-    return this.gallary[id];
+    return this.http.get('http://localhost:3000/gallaries/'+id)
+      .map((response:Response) => {
+        return response.json().obj;
+      })
+      .catch((error:Response) => {
+        return Observable.throw("error when get one photo");
+
+      });
   }
 
   newGallary(gallary: Gallary){

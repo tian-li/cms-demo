@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     ) {
     window.onscroll = () => {
       zone.run(() => {
-        if(window.pageYOffset>200) {
+        if(window.pageYOffset>500) {
           this.shouldStick=true;
         } else {
           this.shouldStick=false;
