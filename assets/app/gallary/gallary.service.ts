@@ -12,7 +12,7 @@ export class GallaryService {
   constructor(private http: Http){}
 
   getGallary() {
-    return this.http.get('http://localhost:3000/gallaries')
+    return this.http.get('https://tiantianapp.herokuapp.com/gallaries')
       .map((response:Response) => {
         const gallary = response.json().obj;
         let transformedGallary:Gallary[]=[];
@@ -37,7 +37,7 @@ export class GallaryService {
   }
 
   getPhoto(id: number){
-    return this.http.get('http://localhost:3000/gallaries/'+id)
+    return this.http.get('https://tiantianapp.herokuapp.com/gallaries/'+id)
       .map((response:Response) => {
         return response.json().obj;
       })
@@ -51,7 +51,7 @@ export class GallaryService {
     const body = JSON.stringify(gallary);
     const headers = new Headers({'Content-Type':'application/json'});
 
-    return this.http.post('http://localhost:3000/gallaries', body, {headers:headers})
+    return this.http.post('https://tiantianapp.herokuapp.com/gallaries', body, {headers:headers})
       .map((response:Response) => {
         console.log("response");
         console.log(response);

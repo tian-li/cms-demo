@@ -13,7 +13,7 @@ private blogs: Blog[] = [];
 constructor(private http: Http){}
 
   getBlogs() {
-    return this.http.get('http://localhost:3000/blogs')
+    return this.http.get('https://tiantianapp.herokuapp.com/blogs')
       .map((response:Response) => {
         const blogs = response.json().obj;
         let transformedBlogs:Blog[]=[];
@@ -40,7 +40,7 @@ constructor(private http: Http){}
   getBlog(id: number){
     //return this.blogs[id];
 
-    return this.http.get('http://localhost:3000/blogs/'+id)
+    return this.http.get('https://tiantianapp.herokuapp.com/blogs/'+id)
       .map((response:Response) => {
         return response.json().obj;
       })
@@ -59,7 +59,7 @@ constructor(private http: Http){}
     console.log(body);
     const headers = new Headers({'Content-Type':'application/json'});
 
-    return this.http.post('http://localhost:3000/blogs', body, {headers:headers})
+    return this.http.post('https://tiantianapp.herokuapp.com/blogs', body, {headers:headers})
       .map((response:Response) => {
         console.log("response");
         console.log(response);
