@@ -18,8 +18,6 @@ constructor(private http: Http){}
         const blogs = response.json().obj;
         let transformedBlogs:Blog[]=[];
         for(let blog of blogs) {
-          // console.log("received blog");
-          // console.log(blog);
           transformedBlogs.push(new Blog(
               blog.title,
               blog.summary,
@@ -38,25 +36,17 @@ constructor(private http: Http){}
   }
 
   getBlog(id: number){
-    //return this.blogs[id];
-
     return this.http.get('https://tiantianapp.herokuapp.com/blogs/'+id)
       .map((response:Response) => {
         return response.json().obj;
       })
       .catch((error:Response) => {
         return Observable.throw("error when get one blog");
-
       });
   }
 
   newBlog(blog: Blog){
-    //this.blogs.push(blog);
-    console.log("blog in service");
-    console.log(blog);
     const body = JSON.stringify(blog);
-    console.log("body");
-    console.log(body);
     const headers = new Headers({'Content-Type':'application/json'});
 
     return this.http.post('https://tiantianapp.herokuapp.com/blogs', body, {headers:headers})
@@ -65,9 +55,6 @@ constructor(private http: Http){}
         console.log(response);
 
         const result = response.json();
-
-        console.log("result");
-        console.log(result);
         let id:string = result.boj._id;
         const blog = new Blog(
           result.obj.title,

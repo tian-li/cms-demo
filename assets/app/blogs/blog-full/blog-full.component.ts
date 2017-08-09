@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
+import 'rxjs/add/operator/mergeMap';
 
 import{Blog} from '../../models/blog.model';
 
@@ -11,28 +12,26 @@ import{BlogsService} from '../blogs.service';
   styleUrls: ['./blog-full.component.css']
 })
 export class BlogFullComponent implements OnInit {
-  blog: Blog;
+  
   id: number;
+  blog: Blog;
 
   constructor(private blService: BlogsService,
               private router: Router,
               private route: ActivatedRoute) { }
 
+  // mergeMap 
   ngOnInit() {
     this.route.params
-    .subscribe(
-      (params: Params) => {
+      .mergeMap((params: Params) => {
         this.id = params['id'];
-        this.blService.getBlog(this.id)
-          .subscribe(
-            (blog:Blog) => {
-              this.blog = blog;
-
-              console.warn(this.blog);
-            });
+        return this.blService.getBlog(this.id);
+      })
+      .subscribe((blog) => {
+        this.blog = blog;
+        console.log("merge");
+        console.log(this.blog);
       });
-
-    
   }
 
 }
