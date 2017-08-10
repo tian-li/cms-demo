@@ -6,13 +6,13 @@ export class Blog {
   public imageUrl: string;
   public id?: string;
   public commentId?: string;
-  public tagId?: string[];
+  public tags?: string[];
 
   constructor(title: string, 
               summary: string, 
               content: string, 
               imageUrl: string,
-              tagId?: string[],
+              tags?: string[],
               id?:string,
               commentId?: string
               ){
@@ -23,6 +23,6 @@ export class Blog {
     this.imageUrl = imageUrl;
     this.id=id;
     this.commentId = commentId;
-    this.tagId = tagId;
+    this.tags = tags;
   }
 }

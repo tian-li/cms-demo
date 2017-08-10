@@ -4,7 +4,7 @@ var Blog = require('./blog');
 
 var schema = new Schema({
   tag: { type: String, required: true},
-  blogId: { type: Schema.ObjectId, ref: 'Blog'},
+  blogId: [{ type: Schema.ObjectId, ref: 'Blog'}]
 });
 
 module.exports = mongoose.model('BlogTag', schema);

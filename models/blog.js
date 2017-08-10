@@ -12,10 +12,7 @@ var schema = new Schema({
     type:Schema.ObjectId,
     ref: 'BlogComment'
   }],
-  tags: [{
-    type: Schema.ObjectId,
-    ref: 'BlogTag'
-  }]
+  tags: [{ type: String }]
 });
 
 module.exports = mongoose.model('Blog', schema);

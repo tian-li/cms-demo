@@ -26,6 +26,7 @@ constructor(private http: Http){}
               blog.summary,
               blog.content,
               blog.imageUrl,
+              blog.tags,
               blog._id
             ));
         }
