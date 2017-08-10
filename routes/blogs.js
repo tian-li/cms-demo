@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 var Blog = require('../models/blog');
+var BlogComment = require('../models/blog-comment');
 
 // var messages = {
 
@@ -25,27 +26,58 @@ router.get('/', function(req, res, next) {
       });
 });
 
+
+// router.get('/:id', function(req, res, next) {
+//   Blog.findById(req.params.id, function(err, blog) {
+//     if(err) {
+//       return res.status(500).json({
+//             title: 'An error occurred',
+//             error: err
+//       });
+//     }
+
+//     if(!blog) {
+//       return res.status(500).json({
+//         title: 'No blog found',
+//         error: {message:'blog not found'}
+//       });
+//     }
+
+//     res.status(200).json({
+//         message:'Success',
+//         obj:blog
+//     });
+//   });
+// });
+
+
+// populate
 router.get('/:id', function(req, res, next) {
-  Blog.findById(req.params.id, function(err, blog) {
-    if(err) {
-      return res.status(500).json({
-            title: 'An error occurred',
-            error: err
-      });
-    }
+  Blog.findById(req.params.id)
+    .populate('comments', ['content', 'date', 'username'])
+    .exec(function (err, blog) {
+      if(err) {
+        return res.status(500).json({
+              title: 'An error occurred',
+              error: err
+        });
+      }
 
-    if(!blog) {
-      return res.status(500).json({
-        title: 'No blog found',
-        error: {message:'blog not found'}
-      });
-    }
+      if(!blog) {
+        return res.status(500).json({
+          title: 'No blog found',
+          error: {message:'blog not found'}
+        });
+      }
+      
+      console.log('blog with comment');
+      console.log(blog);
 
-    res.status(200).json({
-        message:'Success',
-        obj:blog
+      res.status(200).json({
+          message:'Success',
+          obj:blog
+      });
     });
-  });
 });
 
 router.post('/', function(req, res, next) {
