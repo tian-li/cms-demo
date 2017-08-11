@@ -15,26 +15,27 @@ export class CommentService {
 
   newBlogComment(comment: BlogComment) {
     const body = JSON.stringify(comment);
-    console.log('body');
-    console.log(body);
+    // console.log('body');
+    // console.log(body);
     const headers = new Headers({'Content-Type':'application/json'});
 
     return this.http.post(this.url+'/comment/blogs', body, {headers:headers})
       .map((response:Response) => {
-        console.log("response");
-        console.log(response);
+        // console.log("response");
+        // console.log(response);
 
         const result = response.json();
-        let id:string = result.boj._id;
+        // console.log(result);
         const blogComment = new BlogComment(
           result.obj.content,
           result.obj.username,
-          result.obj.blog._id,
+          result.obj.blogId._id,
           result.obj.date,
-          result.obj.id
+          result.obj._id
           );
         //this.blogs.push(blog);
-        console.log(blogComment);
+        // console.log('blogComment');
+        // console.log(blogComment);
         return blogComment;
       })
       .catch((error: Response) => {

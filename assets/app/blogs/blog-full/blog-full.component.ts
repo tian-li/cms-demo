@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { NgForm } from "@angular/forms";
+import { DatePipe } from '@angular/common';
 import 'rxjs/add/operator/mergeMap';
 
 import{Blog} from '../../models/blog.model';
@@ -27,7 +28,7 @@ export class BlogFullComponent implements OnInit {
 
   // mergeMap 
   ngOnInit() {
-    console.log(this.id);
+    //console.log(this.id);
     this.route.params
       .mergeMap((params: Params) => {
         this.id = params['id'];
@@ -35,8 +36,8 @@ export class BlogFullComponent implements OnInit {
       })
       .subscribe((blog) => {
         this.blog = blog;
-        console.log("merge");
-        console.log(this.blog);
+        // console.log("merge");
+        // console.log(this.blog);
       });
   }
 
@@ -45,10 +46,12 @@ export class BlogFullComponent implements OnInit {
       form.value.content,
       form.value.username,
       this.id);
-    console.log(blogComment);
+    //console.log(blogComment);
     this.commentService.newBlogComment(blogComment)
-      .subscribe(
-        data => console.log(data));
+      .subscribe((data) => {
+        this.blog.comments.push(data);
+        //console.log(this.blog);
+      });
   }
 
 }

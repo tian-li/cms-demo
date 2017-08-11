@@ -5,7 +5,7 @@ export class Blog {
   public content: string;
   public imageUrl: string;
   public id?: string;
-  public commentId?: string;
+  public comments?: string[];
   public tags?: string[];
 
   constructor(title: string, 
@@ -14,7 +14,7 @@ export class Blog {
               imageUrl: string,
               tags?: string[],
               id?:string,
-              commentId?: string
+              comments?: string[]
               ){
     
     this.title=title;
@@ -22,7 +22,7 @@ export class Blog {
     this.content = content;
     this.imageUrl = imageUrl;
     this.id=id;
-    this.commentId = commentId;
+    this.comments = comments;
     this.tags = tags;
   }
 }
