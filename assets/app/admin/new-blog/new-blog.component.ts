@@ -19,12 +19,15 @@ export class NewBlogComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   onSubmit(form:NgForm) {
+    let tags = form.value.tags.split(",");
     const blog = new Blog(
       form.value.title,
       form.value.summary,
       form.value.content,
       form.value.imageUrl,
+      tags
       );
+    console.log(blog);
     this.blogService.newBlog(blog)
       .subscribe(
         data => console.log(data));
