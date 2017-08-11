@@ -12,6 +12,7 @@ import { BlogFullComponent } from './blogs/blog-full/blog-full.component';
 
 import { GallaryService } from './gallary/gallary.service';
 import {BlogsService} from './blogs/blogs.service';
+import {CommentService} from './shared/comment.service';
 import {AdminService} from './shared/admin.service';
 import {AdminGuard} from './shared/admin-guard.service';
 
@@ -48,7 +49,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BlogsService, GallaryService, AdminService, AdminGuard],
+  providers: [BlogsService, GallaryService, CommentService, AdminService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

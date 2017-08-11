@@ -2,17 +2,19 @@ import { Http, Response, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
+import { environment } from '../../environments/environment';
 import { Gallary } from '../models/gallary.model';
 
 @Injectable()
 export class GallaryService {
 
   private gallary: Gallary[] = [];
+  private url = environment.url;
 
   constructor(private http: Http){}
 
   getGallary() {
-    return this.http.get('https://tiantianapp.herokuapp.com/gallaries')
+    return this.http.get(this.url+'/gallaries')
       .map((response:Response) => {
         const gallary = response.json().obj;
         let transformedGallary:Gallary[]=[];
@@ -37,7 +39,7 @@ export class GallaryService {
   }
 
   getPhoto(id: number){
-    return this.http.get('https://tiantianapp.herokuapp.com/gallaries/'+id)
+    return this.http.get(this.url+'/gallaries/'+id)
       .map((response:Response) => {
         return response.json().obj;
       })
@@ -51,7 +53,7 @@ export class GallaryService {
     const body = JSON.stringify(gallary);
     const headers = new Headers({'Content-Type':'application/json'});
 
-    return this.http.post('https://tiantianapp.herokuapp.com/gallaries', body, {headers:headers})
+    return this.http.post(this.url+'/gallaries', body, {headers:headers})
       .map((response:Response) => {
         console.log("response");
         console.log(response);

@@ -21,15 +21,12 @@ export class GallaryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-    .subscribe(
-      (params: Params) => {
+      .mergeMap((params: Params) => {
         this.id = params['id'];
-        this.glyService.getPhoto(this.id)
-          .subscribe(
-            (photo:Gallary) => {
-              this.photo = photo;
-              console.log(this.photo);
-            });
+        return this.glyService.getPhoto(this.id);
+      })
+      .subscribe((photo) => {
+        this.photo = photo;
       });
   }
 
