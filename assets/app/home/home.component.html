@@ -8,7 +8,7 @@
     <h2><a routerLink="/blog">BLOGS</a></h2>
   </div>
   <div class="row">
-    <div class="col span-1-of-3" *ngFor=" let blog of blogs; let i = index ">
+    <div class="col col-md-4" *ngFor=" let blog of blogs; let i = index ">
       <div class="blog-item">
         <div class="blog-img-container">
           <img src="{{blog.imageUrl}}" alt="img" class="blog-img">
@@ -45,7 +45,7 @@
     <h2><a routerLink="/about">About Me</a></h2>
   </div>
   <div class="row">
-    <div class="col span-1-of-3">
+    <div class="col col-md-4">
       <div class="info">
         <img class="profile" src="http://res.cloudinary.com/dho1fmz51/image/upload/v1499456021/WechatIMG65_phdknq.jpg" alt="Profile image">
         <p class="my-name">李天</p>
@@ -63,7 +63,7 @@
       </div>
       
     </div>
-    <div class="col span-3-of-5">
+    <div class="col col-md-8">
       <div class="self-intro">
         <ul>
           <li>

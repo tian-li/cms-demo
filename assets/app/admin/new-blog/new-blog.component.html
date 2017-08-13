@@ -2,8 +2,9 @@
 <a [routerLink]="['../new-gallary']">New Gallary</a>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="row">
-      <label for="title">Title:</label>
+      <label class="col span-1-of-3" for="title">Title:</label>
       <input 
+        class="col span-2-of-3"
         type="text" 
         id="title" 
         [ngModel]="blog?.title" 
@@ -11,8 +12,9 @@
         required>
     </div>
     <div class="row">
-      <label for="title">tags:</label>
+      <label class="col span-1-of-3" for="title">tags:</label>
       <input 
+        class="form-control col span-2-of-3"
         type="text" 
         id="tags" 
         [ngModel]="blog?.tags" 
@@ -20,26 +22,29 @@
         required>
     </div>
     <div class="row">
-      <label for="summary">Summary:</label>
-      <input 
+      <label class="col span-1-of-3" for="summary">Summary:</label>
+      <textarea 
+        class="form-control col span-2-of-3"
         type="text" 
         id="summary" 
         [ngModel]="blog?.summary" 
         name="summary" 
-        required>
+        required></textarea>
     </div>
     <div class="row">
-      <label for="content">Content:</label>
-      <input 
+      <label class="col span-1-of-3" for="content">Content:</label>
+      <textarea 
+        class="form-control col span-2-of-3"
         type="text" 
         id="content" 
         [ngModel]="blog?.content" 
         name="content" 
-        required>
+        required></textarea>
     </div>
     <div class="row">
-      <label for="imageUrl">ImageUrl:</label>
+      <label class="col span-1-of-3" for="imageUrl">ImageUrl:</label>
       <input 
+        class="form-control"
         type="text" 
         id="imageUrl" 
         [ngModel]="blog?.imageUrl" 

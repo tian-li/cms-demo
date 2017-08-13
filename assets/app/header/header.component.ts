@@ -12,15 +12,15 @@ export class HeaderComponent implements OnInit {
   constructor(zone: NgZone,
     private route:ActivatedRoute
     ) {
-    window.onscroll = () => {
-      zone.run(() => {
-        if(window.pageYOffset>500) {
-          this.shouldStick=true;
-        } else {
-          this.shouldStick=false;
-        }
-      });
-    }
+    // window.onscroll = () => {
+    //   zone.run(() => {
+    //     if(window.pageYOffset>500) {
+    //       this.shouldStick=true;
+    //     } else {
+    //       this.shouldStick=false;
+    //     }
+    //   });
+    // }
    }
 
   ngOnInit() {

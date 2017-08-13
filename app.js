@@ -13,8 +13,8 @@ var gallaryRoutes = require('./routes/gallaries');
 var blogCommentRoutes = require('./routes/blog-comment');
 
 var app = express();
-//mongoose.connect('localhost:27017/cms');
-mongoose.connect('tian:93899389@ds031617.mlab.com:31617/cms');
+mongoose.connect('localhost:27017/cms');
+//mongoose.connect('tian:93899389@ds031617.mlab.com:31617/cms');
 
 cloudinary.config({ 
   cloud_name: 'dho1fmz51', 
