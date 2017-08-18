@@ -11,6 +11,7 @@ var appRoutes = require('./routes/app');
 var blogRoutes = require('./routes/blogs');
 var gallaryRoutes = require('./routes/gallaries');
 var blogCommentRoutes = require('./routes/blog-comment');
+var gallaryCommentRoutes = require('./routes/gallary-comment');
 
 var app = express();
 mongoose.connect('localhost:27017/cms');
@@ -42,6 +43,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/comment/blogs', blogCommentRoutes);
+app.use('/comment/gallaries', gallaryCommentRoutes);
 app.use('/blogs', blogRoutes);
 app.use('/gallaries', gallaryRoutes);
 app.use('/', appRoutes);

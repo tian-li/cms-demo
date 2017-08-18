@@ -84,15 +84,3 @@ textarea {
   margin: 15px 0;
   height: 70px;
 }
-
-.btn-submit {
-  padding: 7px 12px;
-  border: 1px solid transparent;
-  color: #fff;
-  background-color: #009a61;
-  border-color: #008151;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 200;
-  cursor: pointer;
-}

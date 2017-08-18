@@ -6,7 +6,7 @@
         <p class="blog-full-meta"><i class="ion-ios-calendar-outline"></i>Aug 9, 2017 <i class="ion-pound"></i> <span *ngFor=" let tag of blog?.tags">{{tag}} </span></p>
       </div>
       <div class="row">
-        <div class="blog-content">{{blog?.content}}</div>
+        <div class="blog-content" [innerHTML] = "blog?.content"></div>
       </div>
     </div>
   </div> <!-- 文章结束 -->
@@ -26,7 +26,7 @@
               <span class="comment-username">{{comment?.username}}</span>
               <span class="comment-date"> · {{comment?.date | date}}</span>
             </div>
-            <div class="comment-content">{{comment?.content}}</div>
+            <div class="comment-content" [innerHTML]="comment?.content"></div>
           </div>
         </div>
       </div> <!-- 评论列表结束 -->
@@ -59,7 +59,7 @@
                   required></textarea> 
               </div>
               <div class="row pull-right">
-                <button class="btn-submit" type="submit">发布评论</button>
+                <button class="btn btn-success" type="submit">发布评论</button>
               </div>
             </form>
           </div>

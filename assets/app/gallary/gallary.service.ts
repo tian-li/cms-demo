@@ -26,6 +26,7 @@ export class GallaryService {
               g.state,
               g.thumb,
               g.full,
+              g.likes,
               g._id
             ));
         }
@@ -55,13 +56,13 @@ export class GallaryService {
 
     return this.http.post(this.url+'/gallaries', body, {headers:headers})
       .map((response:Response) => {
-        console.log("response");
-        console.log(response);
+        // console.log("response");
+        // console.log(response);
 
         const result = response.json();
 
-        console.log("result");
-        console.log(result);
+        // console.log("result");
+        // console.log(result);
         
         const gallary = new Gallary(
           result.obj.title,

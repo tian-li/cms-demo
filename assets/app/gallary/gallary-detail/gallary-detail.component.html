@@ -1,19 +1,37 @@
 <div class="row">
   <div class="photo-container clearfix">
-    <div class="col span-2-of-3">
+    <div class="col col-md-8">
       <img src="{{photo?.full}}" alt="">
     </div>
-    <div class="col span-1-of-3 right">
+    <div class="col col-md-4 right">
+      <div class="photo-title">{{photo?.title}}</div>
       <div class="photo-meta">
-        <p>{{photo?.date}}</p>
-        <p>{{photo?.city}}, {{photo?.state}}</p>
+        <span><i class="ion-calendar"></i>{{photo?.date}}</span>
+        <span class="location"><i class="ion-location"></i>{{photo?.city}}, {{photo?.state}}</span>
       </div>
       <div class="comment">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <input 
+            type="text"
+            id="username"
+            [ngModel]="comment?.username"
+            name="username"
+            placeholder="昵称(最多50个字符)"
+            maxlength="50"
+            required>
+          <input 
+            type="text"
+            id="content"
+            [ngModel]="comment?.content"
+            name="content"
+            placeholder="评论(最多50个字符)"
+            maxlength="50"
+            required>
+            <button class="btn btn-primary" type="submit">发布评论</button>
+        </form>
         
-        <input type="text" placeholder="comment">
         <div class="comment-content">
-          <p><span>孙悦轩:</span>好好好</p>
-          <p><span>max-queen:</span>漂亮漂亮</p>
+          <p *ngFor="let comment of photo?.comments"><span>{{comment?.username}}: </span>{{comment?.content}}</p>
         </div>
       </div>
     </div>

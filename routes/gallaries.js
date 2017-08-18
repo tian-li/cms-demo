@@ -4,10 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 var Gallary = require('../models/gallary');
-
-// var messages = {
-
-// }
+var GallaryComment = require('../models/gallary-comment');
 
 router.get('/', function(req, res, next) {
   Gallary.find({}, function(err, gallary) {
@@ -26,26 +23,31 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  Gallary.findById(req.params.id, function(err, gallary) {
-    if(err) {
-      return res.status(500).json({
-            title: 'An error occurred',
-            error: err
-      });
-    }
+  Gallary.findById(req.params.id)
+    .populate('comments', ['content', 'username'])
+    .exec(function (err, gallary) {
+      if(err) {
+        return res.status(500).json({
+              title: 'An error occurred',
+              error: err
+        });
+      }
 
-    if(!gallary) {
-      return res.status(500).json({
-        title: 'No blog found',
-        error: {message:'blog not found'}
-      });
-    }
+      if(!gallary) {
+        return res.status(500).json({
+          title: 'No gallay found',
+          error: {message:'gallary not found'}
+        });
+      }
+      
+      console.log('gallary with comment');
+      console.log(gallary);
 
-    res.status(200).json({
-        message:'Success',
-        obj:gallary
+      res.status(200).json({
+          message:'Success',
+          obj:gallary
+      });
     });
-  });
 });
 
 router.post('/', function(req, res, next) {

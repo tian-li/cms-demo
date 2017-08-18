@@ -131,6 +131,7 @@ a:visited {
 .blog-img-container {
   overflow: hidden;
   background: #000;
+  margin-top: 15px;
 }
 
 .blog-img {

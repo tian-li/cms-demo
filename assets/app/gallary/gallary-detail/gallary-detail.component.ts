@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
+import { NgForm } from "@angular/forms";
+import { DatePipe } from '@angular/common';
+import 'rxjs/add/operator/mergeMap';
+
+import { Gallary } from '../../models/gallary.model';
+import { GallaryComment } from '../../models/gallary-comment.model';
 
 import { GallaryService } from '../gallary.service';
-import { Gallary } from '../../models/gallary.model';
-
+import { CommentService } from '../../shared/comment.service';
 
 @Component({
   selector: 'app-gallary-detail',
@@ -12,10 +17,12 @@ import { Gallary } from '../../models/gallary.model';
 })
 export class GallaryDetailComponent implements OnInit {
   
-  photo: Gallary;
   id: number;
+  photo: Gallary;
+  comment: GallaryComment;
 
   constructor(private glyService: GallaryService,
+              private commentService: CommentService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -27,6 +34,19 @@ export class GallaryDetailComponent implements OnInit {
       })
       .subscribe((photo) => {
         this.photo = photo;
+      });
+  }
+
+  onSubmit(form:NgForm) {
+    const gallaryComment = new GallaryComment(
+      form.value.content,
+      form.value.username,
+      this.id);
+    console.log(gallaryComment);
+    this.commentService.newGallaryComment(gallaryComment)
+      .subscribe((data) => {
+        this.photo.comments.push(data);
+        //console.log(this.blog);
       });
   }
 

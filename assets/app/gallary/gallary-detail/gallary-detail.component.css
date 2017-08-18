@@ -35,6 +35,26 @@
   height: 100%;
 }
 
+.photo-title {
+  font-size: 25px;
+  margin-left: -1px;
+}
+
+.photo-meta {
+  font-weight: 300;
+  color:rgba(50, 50, 50, 0.9);
+}
+
+i.ion-location, i.ion-calendar {
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+i.ion-location {
+  margin-left: 5px;
+}
+
 .comment {
   width: 80%;
   margin-top: 20px;
@@ -54,12 +74,11 @@
 }
 
 .comment-content p{
-  font-weight: 100;
-  font-size: 90%;
+  font-size: 14px;
   margin: 4px 0;
 }
 .comment-content p span{
-  font-weight: 400;
+  font-weight: bold;
   display: inline-block;
   margin-right: 5px;
 }
