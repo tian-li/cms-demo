@@ -3,8 +3,7 @@
     <h2>BLOGS</h2>
   </div>
   <div class="row">
-    <div class="col col-md-4" *ngFor=" let blog of blogs; let i = index ">
-      <div class="blog-item">
+    <div class="col col-md-4 blog-item" *ngFor=" let blog of blogs; let i = index ">
         <div class="blog-img-container">
           <img src="{{blog.imageUrl}}" alt="img" class="blog-img">
         </div>
@@ -14,7 +13,6 @@
           <p class="blog-summary">{{blog.summary}}</p>
         </div>
       </div>
-    </div>
   </div>
 </section>
 

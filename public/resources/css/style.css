@@ -123,12 +123,14 @@ a:visited {
 /* -------------------------- */
 
 .blog-item {
-  width:100%;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  padding-bottom: 30px;
 }
 
 .blog-img-container {
+  height: 323px;
+  width: 323px;
   overflow: hidden;
   background: #000;
   margin-top: 15px;
@@ -147,8 +149,6 @@ a:visited {
   opacity: 1;
   transform: scale(1.03);
 }
-
-
 
 .blog-thumb-info {
   width: 100%;

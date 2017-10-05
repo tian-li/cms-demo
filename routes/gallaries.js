@@ -40,14 +40,47 @@ router.get('/:id', function(req, res, next) {
         });
       }
       
-      console.log('gallary with comment');
-      console.log(gallary);
+      // console.log('gallary with comment');
+      // console.log(gallary);
 
       res.status(200).json({
           message:'Success',
           obj:gallary
       });
     });
+});
+
+router.patch('/:id', function(req, res, next) {
+  console.log(req.params);
+  Gallary.findById(req.params.id, function(err, gallary) {
+    if(err) {
+      return res.status(500).json({
+        title: 'An error occured',
+        error: err
+      });
+    }
+    if(!gallary) {
+      return req;
+      // return res.status(500).json({
+      //   title: 'No gallary found',
+      //   error: { message:'gallary not found' }
+      // });
+    }
+    gallary.likes = gallary.likes + 1;
+    gallary.save(function(err, updatedGallary) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occured',
+          error: err
+        });
+      }
+      console.log("updatedGallary",updatedGallary);
+      res.status(201).json({
+        message: 'Liked this photo',
+        obj: updatedGallary
+      });
+    });
+  });
 });
 
 router.post('/', function(req, res, next) {
@@ -62,8 +95,7 @@ router.post('/', function(req, res, next) {
   console.log("gallary route");
   console.log(gallary);
   gallary.save(function (err, result) {
-
-  console.log(err);
+    console.log(err);
     if(err) {
       return res.status(500).json({
         title: 'Error when saving gallary',
@@ -76,5 +108,7 @@ router.post('/', function(req, res, next) {
     });
   });
 });
+
+
 
 module.exports = router;

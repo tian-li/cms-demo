@@ -19,6 +19,7 @@ export class GallaryDetailComponent implements OnInit {
   
   id: number;
   photo: Gallary;
+  likes: number;
   comment: GallaryComment;
 
   constructor(private glyService: GallaryService,
@@ -34,6 +35,7 @@ export class GallaryDetailComponent implements OnInit {
       })
       .subscribe((photo) => {
         this.photo = photo;
+        this.likes = photo.likes;
       });
   }
 
@@ -46,8 +48,15 @@ export class GallaryDetailComponent implements OnInit {
     this.commentService.newGallaryComment(gallaryComment)
       .subscribe((data) => {
         this.photo.comments.push(data);
-        //console.log(this.blog);
       });
+  }
+
+  onLike() {
+    this.glyService.updateGallary(this.photo)
+      .subscribe((data) => {
+        this.likes+=1;
+      });
+
   }
 
 }

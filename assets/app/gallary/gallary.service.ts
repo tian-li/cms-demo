@@ -27,7 +27,8 @@ export class GallaryService {
               g.thumb,
               g.full,
               g.likes,
-              g._id
+              g._id,
+              g.comments
             ));
         }
         this.gallary = transformedGallary;
@@ -78,5 +79,22 @@ export class GallaryService {
       .catch((error: Response) => {
            return Observable.throw("error when add new 123");
        });
+  }
+
+  updateGallary(gallary: Gallary) {
+    const headers = new Headers({'Content-Type':'text'});
+    //console.log("id", id);
+    const body = JSON.stringify(gallary);
+    console.log(gallary);
+    return this.http.patch(this.url+'/gallaries/'+gallary._id, body)
+      .map((response:Response) => {
+
+        console.log("response",response);
+        return response.json().obj;
+      })
+      .catch((error:Response) => {
+        console.log("error", error);
+        return Observable.throw("error when like a photo");
+      });
   }
 }

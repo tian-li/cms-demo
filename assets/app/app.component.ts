@@ -30,19 +30,5 @@ export class AppComponent implements OnInit{
         }
       }
     });
-
-    // scroll to anchor
-    /*this.router.events.subscribe(s => {
-      if (s instanceof NavigationEnd) {
-        const tree = this.router.parseUrl(this.router.url);
-        if (tree.fragment) {
-          const element = document.querySelector("#" + tree.fragment);
-          if (element) { 
-            element.scrollIntoView();
-            window.scrollBy(0, -70);
-          }
-        }
-      }
-    });*/
   }
 }
