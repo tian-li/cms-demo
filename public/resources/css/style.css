@@ -269,11 +269,11 @@ a:visited {
 
 .info {
   float: right;
+  text-align: center;
 }
 
 .my-name {
   font-size: 200%;
-  text-align: center;
   margin: 15px auto;
 }
 

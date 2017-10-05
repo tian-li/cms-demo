@@ -27,6 +27,8 @@ import { GallaryComponent } from './gallary/gallary.component';
 import { GallaryDetailComponent } from './gallary/gallary-detail/gallary-detail.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     GallaryComponent,
     GallaryDetailComponent,
-    FooterComponent
+    FooterComponent,
+    EscapeHtmlPipe
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from "@angular/forms";
+import { DomSanitizer } from '@angular/platform-browser';
 
-import {BlogsService} from '../../blogs/blogs.service';
+import { BlogsService } from '../../blogs/blogs.service';
 import { Blog } from '../../models/blog.model';
+
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-new-blog',
@@ -16,15 +19,21 @@ export class NewBlogComponent implements OnInit {
 
   constructor(private blogService: BlogsService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private sanitizer: DomSanitizer) { }
 
   onSubmit(form:NgForm) {
+    
+    // let content = this.sanitizer.bypassSecurityTrustHtml(form.value.content);
+    // console.log("过滤后的content: ",content);
+    console.log(_.escape(form.value.content));
+    /* 添加博客到数据库 正确代码, 不要删 */
     let tags = form.value.tags.split(",");
     const blog = new Blog(
-      form.value.title,
-      form.value.summary,
-      form.value.content,
-      form.value.imageUrl,
+      _.escape(form.value.title),
+      _.escape(form.value.summary),
+      _.escape(form.value.content),
+      _.escape(form.value.imageUrl),
       tags
       );
     console.log(blog);
@@ -37,13 +46,9 @@ export class NewBlogComponent implements OnInit {
   onClear(form: NgForm) {
         this.blog = null;
         form.resetForm();
-    }
+  }
 
-    ngOnInit() {
-        // this.blogService.messageIsEdit.subscribe(
-        //     (message: Message) => this.message = message
-        // );
-    }
-
-
+  ngOnInit() {
+    console.log('lodash verision: ', _.VERSION);
+  }
 }

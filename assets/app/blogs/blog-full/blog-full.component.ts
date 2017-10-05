@@ -4,11 +4,12 @@ import { NgForm } from "@angular/forms";
 import { DatePipe } from '@angular/common';
 import 'rxjs/add/operator/mergeMap';
 
-import{Blog} from '../../models/blog.model';
-import{BlogComment} from '../../models/blog-comment.model';
+import { Blog } from '../../models/blog.model';
+import { BlogComment } from '../../models/blog-comment.model';
 
-import{BlogsService} from '../blogs.service';
-import{CommentService} from '../../shared/comment.service';
+import { BlogsService } from '../blogs.service';
+import { CommentService } from '../../shared/comment.service';
+// import { EscapeHtmlPipe } from '../../shared/pipes/keep-html.pipe';
 
 @Component({
   selector: 'app-blog-full',
@@ -19,6 +20,7 @@ export class BlogFullComponent implements OnInit {
   
   id: number;
   blog: Blog;
+  content: string;
   comment: BlogComment;
 
   constructor(private blService: BlogsService,
@@ -37,7 +39,8 @@ export class BlogFullComponent implements OnInit {
       .subscribe((blog) => {
         this.blog = blog;
         // console.log("merge");
-        // console.log(this.blog);
+        this.content = this.blog.content;
+        console.log("blog: ",this.blog);
       });
   }
 
