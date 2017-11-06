@@ -5,17 +5,18 @@ var mongoose = require('mongoose');
 
 var Blog = require('../models/blog');
 var BlogComment = require('../models/blog-comment');
-var Tag = require('../models/blog-tag');
 
 router.get('/', function(req, res, next) {
-  Blog.find({}, function(err, blogs) {
+  Blog.find({})
+    .sort('-lastUpdate')
+    .exec(function(err, blogs) {
         if(err) {
           return res.status(500).json({
             title:'An Error Occurred',
             error:err
           });
         }
-        console.log(blogs);
+        // console.log(blogs);
         res.status(200).json({
           message: 'Success',
           obj: blogs
@@ -34,17 +35,12 @@ router.get('/:id', function(req, res, next) {
               error: err
         });
       }
-
       if(!blog) {
         return res.status(500).json({
           title: 'No blog found',
           error: {message:'blog not found'}
         });
       }
-      
-      console.log('blog with comment');
-      console.log(blog);
-
       res.status(200).json({
           message:'Success',
           obj:blog
@@ -53,39 +49,16 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  //console.log(req.body.tags);
-
   var blog = new Blog({
     title:req.body.title,
     summary:req.body.summary,
     content:req.body.content,
     imageUrl:req.body.imageUrl,
+    lastUpdate: req.body.lastUpdate,
+    createDate: req.body.createDate,
     tags: req.body.tags
   });
 
-  var tags = req.body.tags;
-  tags.forEach(function(tag){
-    Tag.findOne({tag: tag}, function(err, t) {
-      if(err) {
-        return res.status(500).json({
-          title: 'Error when find tag',
-          error: err
-        });
-      }
-      if(!t) {
-        var newtag = new Tag({
-          tag: tag,
-          blogId: blog
-        });
-        newtag.save();
-      } else {
-        t.blogId.push(blog);
-        t.save();
-      }
-    });
-  });
-  console.log("blog route");
-  console.log(blog);
   blog.save(function (err, result) {
     if(err) {
       return res.status(500).json({
@@ -95,6 +68,36 @@ router.post('/', function(req, res, next) {
     }
     res.status(201).json({
       message:'Saved blog',
+      obj:result
+    });
+  });
+});
+
+
+router.put('/:id', function(req, res, next) {
+  console.log("last: ", req.body.lastUpdate, typeof req.body.lastUpdate);
+  console.log("create: ", req.body.createDate, typeof req.body.createDate);
+  let id = req.params.id;
+
+  Blog.findOneAndUpdate(id, {
+    title:req.body.title,
+    summary:req.body.summary,
+    content:req.body.content,
+    imageUrl:req.body.imageUrl,
+    lastUpdate: req.body.lastUpdate,
+    createDate: req.body.createDate,
+    tags: req.body.tags
+  }, function(err, result) {
+    if(err) {
+      console.log(err);
+      return res.status(500).json({
+        title: 'Error when update blog',
+        error:err
+      });
+    }
+    console.log(result);
+    return res.status(201).json({
+      message:'updated blog',
       obj:result
     });
   });

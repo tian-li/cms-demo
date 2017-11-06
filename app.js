@@ -7,11 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cloudinary = require('cloudinary');
 
-var appRoutes = require('./routes/app');
-var blogRoutes = require('./routes/blogs');
-var gallaryRoutes = require('./routes/gallaries');
 var blogCommentRoutes = require('./routes/blog-comment');
 var gallaryCommentRoutes = require('./routes/gallary-comment');
+var blogRoutes = require('./routes/blogs');
+var gallaryRoutes = require('./routes/gallaries');
+var userRoutes = require('./routes/user');
+var adminRoutes = require('./routes/admin');
+var appRoutes = require('./routes/app');
 
 var app = express();
 mongoose.connect('localhost:27017/cms');
@@ -46,6 +48,8 @@ app.use('/comment/blogs', blogCommentRoutes);
 app.use('/comment/gallaries', gallaryCommentRoutes);
 app.use('/blogs', blogRoutes);
 app.use('/gallaries', gallaryRoutes);
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler

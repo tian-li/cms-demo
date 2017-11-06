@@ -1,19 +1,18 @@
 import { Http, Response, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
-//import 'rxjs/Rx';
 import { Observable } from "rxjs";
 
 import { environment } from '../../environments/environment';
-import{Blog} from '../models/blog.model';
-import{BlogComment} from '../models/blog-comment.model';
+import { Blog } from '../models/blog.model';
+import { BlogComment } from '../models/blog-comment.model';
 
 @Injectable()
 export class BlogsService {
   
-private blogs: Blog[] = [];
-private url = environment.url;
+  private blogs: Blog[] = [];
+  private url = environment.url;
 
-constructor(private http: Http){}
+  constructor(private http: Http){}
 
   getBlogs() {
     return this.http.get(this.url+'/blogs')
@@ -26,12 +25,15 @@ constructor(private http: Http){}
               blog.summary,
               blog.content,
               blog.imageUrl,
+              blog.lastUpdate,
+              blog.createDate,
               blog.tags,
               blog._id
             ));
         }
         this.blogs = transformedBlogs;
-        console.log(this.blogs);
+        console.log(blogs);
+        console.log(transformedBlogs);
         return transformedBlogs;
       })
       .catch((error: Response) => {
@@ -42,8 +44,6 @@ constructor(private http: Http){}
   getBlog(id: number){
     return this.http.get(this.url+'/blogs/'+id)
       .map((response:Response) => {
-        console.log('response obj');
-        console.log(response.json().obj);
         return response.json().obj;
       })
       .catch((error:Response) => {
@@ -54,14 +54,10 @@ constructor(private http: Http){}
   newBlog(blog: Blog){
     const body = JSON.stringify(blog);
     const headers = new Headers({'Content-Type':'application/json'});
-
     return this.http.post(this.url+'/blogs', body, {headers:headers})
       .map((response:Response) => {
-        console.log("response");
-        console.log(response);
-
         const result = response.json();
-        let id:string = result.boj._id;
+        let id:string = result.obj._id;
         const blog = new Blog(
           result.obj.title,
           result.obj.summary,
@@ -74,11 +70,20 @@ constructor(private http: Http){}
         return blog;
       })
       .catch((error: Response) => {
-           return Observable.throw("error when add new blog");
+        return Observable.throw("error when add new blog:\n",error);
        });
   }
 
-  newComment(comment: Comment) {
-
+  updateBlog(id: number, blog: Blog) {
+    const body = JSON.stringify(blog);
+    let link = this.url+'/blogs/'+id
+    const headers = new Headers({'Content-Type':'application/json'});
+    return this.http.put(link, body, {headers:headers})
+      .map((response: Response) =>{
+        return response.json();
+      })
+      .catch((error: Response) => {
+        return Observable.throw("error when update blog:\n",error);
+      });
   }
 }
