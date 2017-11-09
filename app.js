@@ -12,7 +12,7 @@ var gallaryCommentRoutes = require('./routes/gallary-comment');
 var blogRoutes = require('./routes/blogs');
 var gallaryRoutes = require('./routes/gallaries');
 var userRoutes = require('./routes/user');
-var adminRoutes = require('./routes/admin');
+var adminUserRoutes = require('./routes/adminUser');
 var appRoutes = require('./routes/app');
 
 var app = express();
@@ -49,7 +49,7 @@ app.use('/comment/gallaries', gallaryCommentRoutes);
 app.use('/blogs', blogRoutes);
 app.use('/gallaries', gallaryRoutes);
 app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
+app.use('/admins', adminUserRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler

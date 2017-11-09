@@ -1,7 +1,5 @@
 <div class="row" *ngFor=" let blog of blogs; let i = index ">
   <div class="col-xs-6">
-    <a class="list-item" 
-      [routerLink]="[blog.id]" 
-      routerLinkActive="active-link">{{blog.title}}</a>
+    <a class="list-item" [routerLink]="[blog.id]" routerLinkActive="active-link">{{blog.title}}</a>
   </div>
 </div>

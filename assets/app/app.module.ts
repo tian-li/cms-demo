@@ -1,60 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-// import { BlogListComponent } from './blogs/blog-list/blog-list.component';
-// import { BlogFullComponent } from './blogs/blog-full/blog-full.component';
 
-import { GallaryService } from './gallary/gallary.service';
-import { BlogsService } from './blogs/blogs.service';
-import { CommentService } from './shared/comment.service';
-import { AdminService } from './shared/admin.service';
+import { GallaryService } from './index/gallary/gallary.service';
+import { BlogsService } from './index/blogs/blogs.service';
 import { AdminGuard } from './shared/admin-guard.service';
 
-// import { AdminComponent } from './admin/admin.component';
-// import { NewBlogComponent } from './admin/new-blog/new-blog.component';
-import { NewGallaryComponent } from './admin/new-gallary/new-gallary.component';
-
-import { LoginComponent } from './admin/login/login.component';
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
-import { GallaryComponent } from './gallary/gallary.component';
-import { GallaryDetailComponent } from './gallary/gallary-detail/gallary-detail.component';
-import { FooterComponent } from './footer/footer.component';
-
-import { BlogsModule } from './blogs/blogs.module';
-import { AdminModule } from './admin/admin.module';
-
-// import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
+import { AppRoutingModule } from './app-routing.module';
+import { IndexModule } from './index/index.module';
+// import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    // AdminComponent,
-    // NewBlogComponent,
-    NewGallaryComponent,
-    LoginComponent,
-    AboutComponent,
-    HomeComponent,
-    GallaryComponent,
-    GallaryDetailComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     AppRoutingModule,
-    BlogsModule,
-    AdminModule
+    IndexModule
   ],
-  providers: [BlogsService, GallaryService, CommentService, AdminService, AdminGuard],
+  providers: [BlogsService, GallaryService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminBlogsComponent } from './admin-blogs.component';
 import { AdminBlogsListComponent } from './blogs-list/admin-blogs-list.component';
-import { AdminBlogsEditComponent } from './blogs-edit/admin-blogs-edit.component';
 import { AdminBlogsNewComponent } from './blogs-new/admin-blogs-new.component';
 
 const adminBlogsRoutes: Routes = [

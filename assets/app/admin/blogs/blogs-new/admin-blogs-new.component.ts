@@ -1,9 +1,9 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from "@angular/forms";
 
 import { Blog } from '../../../models/blog.model';
-import { BlogsService } from '../../../blogs/blogs.service';
+import { BlogsService } from '../../../index/blogs/blogs.service';
 
 import * as _ from 'lodash';
 
@@ -12,7 +12,7 @@ import * as _ from 'lodash';
   templateUrl: './admin-blogs-new.component.html',
   styleUrls: ['./admin-blogs-new.component.css']
 })
-export class AdminBlogsNewComponent implements OnInit, OnChanges {
+export class AdminBlogsNewComponent implements OnInit {
   id: number;
   blog: Blog;
   editMode: false;
@@ -32,7 +32,7 @@ export class AdminBlogsNewComponent implements OnInit, OnChanges {
       .subscribe(
         (params: Params) => {
           this.id = params['id'];
-          this.editMode = params['id'] != null;
+          this.editMode = (params['id'] != null);
           if (this.editMode) {
             this.initForm();
           }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Blog } from '../../../models/blog.model';
-import { BlogsService } from '../../../blogs/blogs.service';
+import { BlogsService } from '../../../index/blogs/blogs.service';
 
 
 @Component({
@@ -17,10 +17,9 @@ export class AdminBlogsListComponent implements OnInit {
 
   ngOnInit() {
     this.blogsService.getBlogs()
-        .subscribe(
-          (blogs:Blog[]) => {
-            this.blogs = blogs;
-          });
+      .subscribe((blogs: Blog[]) => {
+        this.blogs = blogs;
+      });
   }
 
 }

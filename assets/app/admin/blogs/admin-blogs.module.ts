@@ -5,14 +5,12 @@ import { FormsModule } from '@angular/forms'
 import { AdminBlogsRoutingModule } from './admin-blogs-routing.module';
 
 import { AdminBlogsComponent } from './admin-blogs.component';
-import { AdminBlogsEditComponent } from './blogs-edit/admin-blogs-edit.component';
 import { AdminBlogsListComponent } from './blogs-list/admin-blogs-list.component';
 import { AdminBlogsNewComponent } from './blogs-new/admin-blogs-new.component';
 
 @NgModule({
   declarations: [
     AdminBlogsComponent,
-    AdminBlogsEditComponent,
     AdminBlogsListComponent,
     AdminBlogsNewComponent
   ],

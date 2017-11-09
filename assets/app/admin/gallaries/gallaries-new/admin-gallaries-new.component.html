@@ -1,0 +1,29 @@
+<div>
+  <a routerLink="../blog">New Blog</a>
+  <form (ngSubmit)="onSubmit(gallaryForm)" [formGroup]="gallaryForm">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input class="form-control" type="text" id="title" name="title" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input class="form-control" type="text" id="date" name="date" formControlName="date">
+    </div>
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input class="form-control" type="text" id="city" name="city" formControlName="city">
+      <label for="state">State:</label>
+      <input class="form-control" type="text" id="state" name="state" formControlName="state">
+    </div>
+    <div class="form-group">
+      <label for="thumb">ImageUrl(Thumb):</label>
+      <input class="form-control" type="text" id="thumb" name="thumb" formControlName="thumb">
+      <label for="full">ImageUrl(Full):</label>
+      <input class="form-control" type="text" id="full" name="full" formControlName="full">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" type="submit" [disabled]="gallaryForm.invalid">Save</button>
+      <button class="btn btn-danger" type="button" (click)="onClear()">Clear</button>
+    </div>
+  </form>
+</div>

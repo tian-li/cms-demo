@@ -1,0 +1,5 @@
+<div class="row" *ngFor=" let gallary of gallaries; let i = index ">
+  <div class="col-xs-6">
+    <a class="list-item" [routerLink]="[gallary.id]" routerLinkActive="active-link">{{gallary.title}}</a>
+  </div>
+</div>

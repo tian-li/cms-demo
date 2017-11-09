@@ -75,8 +75,6 @@ router.post('/', function(req, res, next) {
 
 
 router.put('/:id', function(req, res, next) {
-  console.log("last: ", req.body.lastUpdate, typeof req.body.lastUpdate);
-  console.log("create: ", req.body.createDate, typeof req.body.createDate);
   let id = req.params.id;
 
   Blog.findOneAndUpdate(id, {
