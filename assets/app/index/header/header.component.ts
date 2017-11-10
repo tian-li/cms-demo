@@ -8,23 +8,19 @@ import { Component, OnInit, NgZone } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   shouldStick = false;
-  
+
   constructor(zone: NgZone,
-    private route:ActivatedRoute
-    ) {
+    private route: ActivatedRoute
+  ) {
     window.onscroll = () => {
       zone.run(() => {
-        if(window.pageYOffset>500) {
-          this.shouldStick=true;
+        if (window.pageYOffset > 500) {
+          this.shouldStick = true;
         } else {
-          this.shouldStick=false;
+          this.shouldStick = false;
         }
       });
     }
-   }
-
-  ngOnInit() {
-    
   }
-
+  ngOnInit() { }
 }

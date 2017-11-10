@@ -1,4 +1,4 @@
-/* header {
+header {
   position:fixed;
   top: 0;
   left: 0;
@@ -6,7 +6,7 @@
   background-color: rgba(34, 34, 34, 0.98);
   z-index:9999;
 }
-
+/* 
 .logo:link,
 .logo:visited {
   color: #eee;
