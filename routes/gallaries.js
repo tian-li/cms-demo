@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
         error: err
       });
     }
-    console.log(gallary);
+    // console.log(gallary);
     res.status(200).json({
       message: 'Success',
       obj: gallary
@@ -47,7 +47,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.patch('/:id', function (req, res, next) {
-  console.log(req.params);
+  // console.log(req.params);
   Gallary.findById(req.params.id, function (err, gallary) {
     if (err) {
       return res.status(500).json({
@@ -69,7 +69,7 @@ router.patch('/:id', function (req, res, next) {
           error: err
         });
       }
-      console.log("updatedGallary", updatedGallary);
+      // console.log("updatedGallary", updatedGallary);
       res.status(201).json({
         message: 'Liked this photo',
         obj: updatedGallary
@@ -100,7 +100,4 @@ router.post('/', function (req, res, next) {
     });
   });
 });
-
-
-
 module.exports = router;

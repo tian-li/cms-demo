@@ -1,0 +1,28 @@
+.photo-container {
+  background: #000;
+  width: 100%;
+  /* make this class' width the same with parent's width */
+  margin: 0;
+  overflow: hidden;
+}
+
+.photo-container img {
+  opacity: 0.7;
+  width: 100%;
+  height: auto;
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* 不加这一句的话，图片伸缩时其他图片也会动 */
+}
+
+.photo-container img:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+}

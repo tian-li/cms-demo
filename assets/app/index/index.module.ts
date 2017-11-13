@@ -8,10 +8,10 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { CommentService } from '../shared/comment.service';
+import { BlogItemComponent } from './home/blog-item/blog-item.component';
+import { PhotoItemComponent } from './home/photo-item/photo-item.component';
 
-// import { BlogsModule } from './blogs/blogs.module';
-// import { GallaryModule } from './gallary/gallary.module';
+import { CommentService } from '../shared/comment.service';
 
 import { IndexRoutingModule } from './index-routing.module';
 
@@ -21,13 +21,13 @@ import { IndexRoutingModule } from './index-routing.module';
     HeaderComponent,
     AboutComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    BlogItemComponent,
+    PhotoItemComponent
   ],
   imports: [
     FormsModule,
     CommonModule,
-    // BlogsModule,
-    // GallaryModule,
     IndexRoutingModule
   ],
   providers: [CommentService]

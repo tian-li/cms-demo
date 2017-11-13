@@ -17,7 +17,9 @@
 .jumbotron {
     height: calc(100vh - 51px);
     position: relative;
-    padding: 50px;
+    padding: 0px;
+    margin: 0;
+    /* margin-bottom: 80px; */
 }
 
 .jumbotron .container {
@@ -37,7 +39,7 @@
 
 h2.section-title {
     text-align: center;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 50px auto;
 }
 
 h2.section-title:after {
@@ -47,27 +49,34 @@ h2.section-title:after {
     content: " ";
     width: 100px;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
-.blog-item {
-    box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.20);
+section.section-blog,
+section.section-about {
+    padding: 80px 0;
 }
 
-.blog-img-container {
-    overflow: hidden;
+section.section-blog, section.section-about {
+    background: rgb(244, 244, 244);
 }
 
-.blog-img {
-    opacity: 0.7;
+/* ========== gallary section =========== */
+
+section.section-gallary {
+    padding-top: 80px;
+}
+
+.gallary-showcase {
+    list-style: none;
     width: 100%;
-    height: auto;
-    transform: scale(1.15);
-    transition: transform 0.5s, opacity 0.5s;
-    backface-visibility: hidden;
+    padding: 0;
 }
 
-.blog-img:hover {
-    opacity: 1;
-    transform: scale(1.0);
+.gallary-showcase home-photo-item {
+    display: block;
+    float: left;
+    width: 25%;
+    margin: 0;
+    padding: 0;
 }

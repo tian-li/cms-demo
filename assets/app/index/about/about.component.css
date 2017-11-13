@@ -1,3 +1,35 @@
-.section-about-me {
-  min-height:100vh;
+img.profile {
+    display: block;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+h2.section-title {
+    text-align: center;
+    margin: 0 auto 50px auto;
+}
+
+h2.section-title:after {
+    display: block;
+    height: 2px;
+    background-color: #47c9e5;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.info {
+    text-align: center;
+}
+
+.social-links {
+    list-style: none;
+}
+
+.social-links li {
+    float: left;
 }
