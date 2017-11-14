@@ -8,10 +8,12 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { BlogItemComponent } from './home/blog-item/blog-item.component';
+// import { BlogItemComponent } from './home/blog-item/blog-item.component';
 import { PhotoItemComponent } from './home/photo-item/photo-item.component';
 
 import { CommentService } from '../shared/comment.service';
+
+import { BlogsModule } from './blogs/blogs.module';
 
 import { IndexRoutingModule } from './index-routing.module';
 
@@ -22,14 +24,16 @@ import { IndexRoutingModule } from './index-routing.module';
     AboutComponent,
     HomeComponent,
     FooterComponent,
-    BlogItemComponent,
+    // BlogItemComponent,
     PhotoItemComponent
   ],
   imports: [
     FormsModule,
     CommonModule,
-    IndexRoutingModule
+    IndexRoutingModule,
+    BlogsModule
   ],
+  // exports: [BlogItemComponent],
   providers: [CommentService]
 })
 export class IndexModule { }

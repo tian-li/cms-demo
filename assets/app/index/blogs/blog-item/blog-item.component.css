@@ -1,0 +1,22 @@
+.blog-item {
+  box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.20);
+}
+
+.blog-img-container {
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.blog-img {
+  opacity: 0.7;
+  width: 100%;
+  height: auto;
+  transform: scale(1.15);
+  transition: transform 0.5s, opacity 0.5s;
+  backface-visibility: hidden;
+}
+
+.blog-img:hover {
+  opacity: 1;
+  transform: scale(1.0);
+}

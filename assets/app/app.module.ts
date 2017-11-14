@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 
 import { GallaryService } from './index/gallary/gallary.service';
 import { BlogsService } from './index/blogs/blogs.service';
+import { PagerService } from './shared/pager.service';
 import { AdminGuard } from './shared/admin-guard.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { IndexModule } from './index/index.module';
-// import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { IndexModule } from './index/index.module';
     AppRoutingModule,
     IndexModule
   ],
-  providers: [BlogsService, GallaryService, AdminGuard],
+  providers: [BlogsService, GallaryService, PagerService, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

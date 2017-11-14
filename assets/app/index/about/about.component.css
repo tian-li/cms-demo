@@ -6,7 +6,7 @@ img.profile {
     object-fit: cover;
     margin: 0 auto;
 }
-
+/* 
 h2.section-title {
     text-align: center;
     margin: 0 auto 50px auto;
@@ -20,7 +20,7 @@ h2.section-title:after {
     width: 100px;
     margin: 0 auto;
     margin-top: 30px;
-}
+} */
 
 .info {
     text-align: center;

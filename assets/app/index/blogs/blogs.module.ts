@@ -7,17 +7,20 @@ import { BlogsRoutingModule } from './blogs-routing.module';
 import { BlogsComponent } from './blogs.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogFullComponent } from './blog-full/blog-full.component';
+import { BlogItemComponent } from './blog-item/blog-item.component';
 
 @NgModule({
   declarations: [
     BlogsComponent,
     BlogListComponent,
-    BlogFullComponent
+    BlogFullComponent,
+    BlogItemComponent
   ],
   imports: [
     CommonModule,
     BlogsRoutingModule,
     FormsModule
-  ]
+  ],
+  exports: [BlogItemComponent]
 })
 export class BlogsModule {}
