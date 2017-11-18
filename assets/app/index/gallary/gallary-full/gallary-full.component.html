@@ -1,43 +1,46 @@
-<!-- 此html有问题, 会造成footer链接点不了 -->
-
-
-<div class="row">
-  <div class="photo-container clearfix">
-    <div class="col col-md-8">
-      <img src="{{photo?.full}}" alt="">
-    </div>
-    <div class="col col-md-4 right">
-      <div class="photo-title">{{photo?.title}}</div>
+<div class="flex-column gallary-container">
+  <div class="row">
+    <div class="photo-data">
+      <div class="photo-title">
+        <h2>{{photo?.title}}</h2>
+      </div>
       <div class="photo-meta">
-        <span>
-          <i class="ion-calendar"></i>{{photo?.date}}</span>
-        <span class="location">
-          <i class="ion-location"></i>{{photo?.city}}, {{photo?.state}}</span>
-        <span class="likes pull-right" (click)="onLike()">
-          <i class="ion-ios-heart-outline"></i>{{likes}}</span>
+        <i class="fa fa-calendar-o"></i>{{photo?.date}}
+        <i class="fa fa-map-marker"></i>{{photo?.city +", "+ photo?.state}}
+        <i class="fa" [ngClass]="{'fa-heart':liked, 'fa-heart-o':!liked}" (click)="onLike()"></i>{{likes}}
       </div>
-      <div class="comment-box">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-          <div class="form-group">
-            <input class="form-control" type="text" id="username" [ngModel]="comment?.username" name="username" placeholder="昵称(最多50个字符)"
-              maxlength="50" required>
-            <input class="form-control" type="text" id="content" [ngModel]="comment?.content" name="content" placeholder="评论(最多50个字符)"
-              maxlength="50" required>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-success btn-sm" type="submit">评论</button>
-          </div>
-        </form>
-
-        <div class="comment-content">
-          <div class="row" *ngFor="let comment of photo?.comments">
-            <strong class="comment-user">
-              {{comment?.username}}
-            </strong>
-            {{comment?.content}}
-          </div>
+    </div>
+  </div>
+  <div class="row photo-container">
+    <div class="col-md-8 photo">
+      <!-- <div class="photo" [ngStyle]="{'background-image':'url(' + photo?.full + ')'}"> -->
+        <img class="img-fluid" src="{{photo?.full}}" alt="{{photo?.title}}">
+      <!-- </div> -->
+    </div>
+    <!-- 右侧照片信息及评论 -->
+    <div class="col-md-4 comment-box">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <input class="form-control" type="text" id="username" [ngModel]="comment?.username" name="username" placeholder="昵称(最多10个字符)"
+            maxlength="10" required>
+          <input class="form-control" type="text" id="content" [ngModel]="comment?.content" name="content" placeholder="评论(最多50个字符)"
+            maxlength="50" required>
         </div>
-      </div>
+        <div class="form-group">
+          <button class="btn btn-success btn-sm" type="submit" [disabled]="f.invalid">评论</button>
+        </div>
+      </form>
+      <ul class="comment-content flex-column">
+        <li *ngFor="let comment of photo?.comments">
+          <span class="comment-user">
+            {{comment?.username}}
+          </span>
+          <span>
+            {{comment?.content}}
+          </span>
+        </li>
+      </ul>
+
     </div>
   </div>
 </div>

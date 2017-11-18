@@ -46,8 +46,9 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-router.patch('/:id', function (req, res, next) {
-  // console.log(req.params);
+router.put('/:id/like', function (req, res, next) {
+  console.log(req.body);
+  
   Gallary.findById(req.params.id, function (err, gallary) {
     if (err) {
       return res.status(500).json({
@@ -61,7 +62,11 @@ router.patch('/:id', function (req, res, next) {
         error: { message: 'gallary not found' }
       });
     }
-    gallary.likes = gallary.likes + 1;
+    if (req.body.liked){
+      gallary.likes += 1;
+    } else {
+      gallary.likes -= 1;
+    }
     gallary.save(function (err, updatedGallary) {
       if (err) {
         return res.status(500).json({
@@ -69,7 +74,6 @@ router.patch('/:id', function (req, res, next) {
           error: err
         });
       }
-      // console.log("updatedGallary", updatedGallary);
       res.status(201).json({
         message: 'Liked this photo',
         obj: updatedGallary

@@ -20,19 +20,24 @@ export class BlogListComponent implements OnInit {
   pager: any = {};
   pagedItems: any[];
   private allItems: any[];
+  itemsPerRow: number;
+  rows = [];
 
   ngOnInit() {
     this.blogsService.getBlogs()
       .subscribe((blogs: Blog[]) => {
         this.allItems = blogs;
         this.setPage(1);
-        // console.log(this.blogs);
+        this.itemsPerRow = 3
+        this.rows = Array.from(Array(Math.ceil(this.pagedItems.length / this.itemsPerRow)).keys());
       });
+    
+
   }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
-        return;
+      return;
     }
 
     // get pager object from service
@@ -40,6 +45,6 @@ export class BlogListComponent implements OnInit {
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
-}
+  }
 
 }

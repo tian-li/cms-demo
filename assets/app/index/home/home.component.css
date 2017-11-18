@@ -37,15 +37,12 @@
     transform: translate(-50%, -50%);
 }
 
-section.section-blog, section.section-about {
+section.section-blog,
+section.section-about {
     background: rgb(244, 244, 244);
 }
 
 /* ========== gallary section =========== */
-
-section.section-gallary {
-    padding-top: 80px;
-}
 
 .gallary-showcase {
     list-style: none;

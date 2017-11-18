@@ -84,3 +84,9 @@ textarea {
   margin: 15px 0;
   height: 70px;
 }
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 0.8rem;
+  color: #797979;
+}

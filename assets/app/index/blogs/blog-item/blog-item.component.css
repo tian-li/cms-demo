@@ -20,3 +20,17 @@
   opacity: 1;
   transform: scale(1.0);
 }
+
+p.card-text {
+  height: 110px;
+}
+
+.read-more {
+  color:rgb(102, 102, 102);
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+}
+
+.read-more:hover {
+  color: #47c9e5;
+}

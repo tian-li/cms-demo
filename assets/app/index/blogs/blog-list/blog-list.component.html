@@ -1,15 +1,13 @@
 <div class="container">
   <h2 class="section-title">BLOG</h2>
-  <div class="row">
-    <div *ngFor="let blog of pagedItems; let i = index">
-      <ng-container *ngIf=" i % 2 == 0 && i != 0">
-        <home-blog-item [blog]="blog" [index]="i"></home-blog-item>
-      </ng-container>
 
+  <div class="row new-line" *ngFor="let i of rows">
+    <div class="col-md-4" *ngFor="let blog of pagedItems | slice:(i*itemsPerRow):(i+1)*itemsPerRow">
+      <home-blog-item [blog]="blog"></home-blog-item>
     </div>
-
   </div>
-  <div class="row">
+
+  <div class="row justify-content-center page-nav">
     <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
       <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
         <a class="page-link" (click)="setPage(1)">First</a>

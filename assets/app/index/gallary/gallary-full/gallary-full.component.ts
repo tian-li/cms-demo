@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from "@angular/forms";
 import { DatePipe } from '@angular/common';
 import 'rxjs/add/operator/mergeMap';
@@ -16,16 +16,17 @@ import { CommentService } from '../../../shared/comment.service';
   styleUrls: ['./gallary-full.component.css']
 })
 export class GallaryFullComponent implements OnInit {
-  
+
   id: number;
   photo: Gallary;
   likes: number;
+  liked: boolean = false;
   comment: GallaryComment;
 
   constructor(private glyService: GallaryService,
-              private commentService: CommentService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+    private commentService: CommentService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
@@ -39,7 +40,7 @@ export class GallaryFullComponent implements OnInit {
       });
   }
 
-  onSubmit(form:NgForm) {
+  onSubmit(form: NgForm) {
     const gallaryComment = new GallaryComment(
       form.value.content,
       form.value.username,
@@ -49,14 +50,14 @@ export class GallaryFullComponent implements OnInit {
       .subscribe((data) => {
         this.photo.comments.push(data);
       });
+    form.reset();
   }
 
   onLike() {
-    this.glyService.updateGallary(this.photo)
+    this.liked = !this.liked;
+    this.glyService.updateGallary(this.id, this.liked)
       .subscribe((data) => {
-        this.likes+=1;
+        this.likes = data.likes;
       });
-
   }
-
 }

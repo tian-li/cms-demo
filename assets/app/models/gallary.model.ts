@@ -6,7 +6,7 @@ export class Gallary {
   public thumb: string;
   public full: string;
   public likes: number;
-  public id?: string;
+  public _id?: string;
   public comments?: string[];
   
 
@@ -17,7 +17,7 @@ export class Gallary {
               thumb:string, 
               full:string, 
               likes?:number,
-              id?: string,
+              _id?: string,
               comments?: string[]){
     this.title=title;
     this.date=date;
@@ -26,7 +26,7 @@ export class Gallary {
     this.thumb = thumb;
     this.full = full;
     this.likes = likes;
-    this.id = id;
+    this._id = _id;
     this.comments = comments;
   }
 }
