@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, Params} from '@angular/router';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from "@angular/forms";
 import { DatePipe } from '@angular/common';
 import 'rxjs/add/operator/mergeMap';
+import * as hljs from 'highlight.js';
 
 import { Blog } from '../../../models/blog.model';
 import { BlogComment } from '../../../models/blog-comment.model';
@@ -15,21 +16,20 @@ import { CommentService } from '../../../shared/comment.service';
   templateUrl: './blog-full.component.html',
   styleUrls: ['./blog-full.component.css']
 })
-export class BlogFullComponent implements OnInit {
-  
+export class BlogFullComponent implements OnInit, AfterViewInit {
+
   id: number;
   blog: Blog;
   content: string;
   comment: BlogComment;
 
   constructor(private blService: BlogsService,
-              private commentService: CommentService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+    private commentService: CommentService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   // mergeMap 
   ngOnInit() {
-    //console.log(this.id);
     this.route.params
       .mergeMap((params: Params) => {
         this.id = params['id'];
@@ -37,22 +37,24 @@ export class BlogFullComponent implements OnInit {
       })
       .subscribe((blog) => {
         this.blog = blog;
-        // console.log("merge");
         this.content = this.blog.content;
-        console.log("blog: ",this.blog);
+        console.log("blog: ", this.blog);
       });
+
   }
 
-  onSubmit(form:NgForm) {
+  ngAfterViewInit() {
+    hljs.initHighlightingOnLoad();
+  }
+
+  onSubmit(form: NgForm) {
     const blogComment = new BlogComment(
       form.value.content,
       form.value.username,
       this.id);
-    //console.log(blogComment);
     this.commentService.newBlogComment(blogComment)
       .subscribe((data) => {
         this.blog.comments.push(data);
-        //console.log(this.blog);
       });
   }
 

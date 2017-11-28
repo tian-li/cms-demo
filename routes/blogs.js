@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 // var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
+var marked = require('marked');
+var _ = require('lodash');
+var hljs = require('highlight.js');
+
 
 var Blog = require('../models/blog');
 var BlogComment = require('../models/blog-comment');
@@ -41,6 +45,11 @@ router.get('/:id', function(req, res, next) {
           error: {message:'blog not found'}
         });
       }
+      // console.log('orignal: ',blog.content);
+      
+      // blog.content = _.unescape(blog.content);
+      // console.log('unescaped: ',blog.content);
+      // blog.content=hljs.initHighlighting(blog.content).value;
       res.status(200).json({
           message:'Success',
           obj:blog
@@ -49,10 +58,25 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+  //正确顺序: unescape -> hljs -> mark, get时不需要unescape
+
+  var content = req.body.content;
+  console.log('before: ', content);
+  content = _.unescape(content);
+  // console.log('after unescape: ', content);
+  marked.setOptions({
+    highlight: function (content) {
+      return hljs.highlightAuto(content).value;
+    }
+  });
+  // console.log('after highlight: ', content);
+  content = marked(content);
+  console.log('after marked: ', content);
+  
   var blog = new Blog({
     title:req.body.title,
     summary:req.body.summary,
-    content:req.body.content,
+    content:content,
     imageUrl:req.body.imageUrl,
     lastUpdate: req.body.lastUpdate,
     createDate: req.body.createDate,

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cloudinary = require('cloudinary');
+// var marked = require('marked');
 
 var blogCommentRoutes = require('./routes/blog-comment');
 var gallaryCommentRoutes = require('./routes/gallary-comment');
