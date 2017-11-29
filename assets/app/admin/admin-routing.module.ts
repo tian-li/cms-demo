@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
 
-import { AdminGuard } from '../shared/admin-guard.service';
+import { AdminGuard } from './admin-guard.service';
 
 const adminRoutes: Routes = [
   { path: '', component: AdminComponent },
   { path: 'user', loadChildren: './admin-user/admin-user.module#AdminUserModule' },
-  { path: 'blog', loadChildren: './blogs/admin-blogs.module#AdminBlogsModule', canActivate: [AdminGuard] },
-  { path: 'gallary', loadChildren: './gallaries/admin-gallaries.module#AdminGallariesModule', canActivate: [AdminGuard] }
+  { path: 'gallary', loadChildren: './admin-gallaries/admin-gallaries.module#AdminGallariesModule', canActivate: [AdminGuard] },
+  { path: 'blog', loadChildren: './admin-blogs/admin-blogs.module#AdminBlogsModule', canActivate: [AdminGuard] }
 ];
 
 @NgModule({

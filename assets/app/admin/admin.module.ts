@@ -4,13 +4,10 @@ import { FormsModule } from '@angular/forms'
 
 import { AdminComponent } from './admin.component';
 
-import { AdminBlogsModule } from './blogs/admin-blogs.module';
-import { AdminUserModule } from './admin-user/admin-user.module';
-
 import { AdminRoutingModule } from './admin-routing.module';
 
 import { AdminService } from './admin.service';
-import { AdminGuard } from '../shared/admin-guard.service';
+import { AdminGuard } from './admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -19,8 +16,7 @@ import { AdminGuard } from '../shared/admin-guard.service';
   imports: [
     CommonModule,
     FormsModule,
-    AdminRoutingModule,
-    AdminBlogsModule
+    AdminRoutingModule
   ],
   providers: [AdminGuard, AdminService]
 })

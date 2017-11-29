@@ -9,8 +9,8 @@ const indexRoutes: Routes = [
   { path: 'index', component: IndexComponent, children:[
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'blog', loadChildren:'./blogs/blogs.module#BlogsModule'},
-    { path: 'gallary', loadChildren:'./gallary/gallary.module#GallaryModule'}
+    { path: 'gallary', loadChildren:'./gallary/gallary.module#GallaryModule'},
+    { path: 'blog', loadChildren:'./blogs/blogs.module#BlogsModule'}
   ]}
 ];
 
