@@ -2,7 +2,7 @@ import { Http, Response, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Gallary } from '../../models/gallary.model';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class GallaryService {
 
   getGallary() {
     return this.http.get(this.url + '/gallaries')
-      .map((response: Response) => {
+      .map((response: any) => {
         const gallary = response.json().obj;
         let transformedGallary: Gallary[] = [];
         for (let g of gallary) {
@@ -32,22 +32,20 @@ export class GallaryService {
           ));
         }
         this.gallary = transformedGallary;
-        console.log(this.gallary);
         return transformedGallary;
       })
-      .catch((error: Response) => {
+      .catch((error: any) => {
         return Observable.throw("error when get");
       });
   }
 
   getPhoto(id: number) {
     return this.http.get(this.url + '/gallaries/' + id)
-      .map((response: Response) => {
+      .map((response: any) => {
         return response.json().obj;
       })
-      .catch((error: Response) => {
+      .catch((error: any) => {
         return Observable.throw("error when get one photo");
-
       });
   }
 
@@ -55,7 +53,7 @@ export class GallaryService {
     const body = JSON.stringify(gallary);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.url + '/gallaries', body, { headers: headers })
-      .map((response: Response) => {
+      .map((response: any) => {
         const result = response.json();
         const gallary = new Gallary(
           result.obj.title,
@@ -68,24 +66,32 @@ export class GallaryService {
         this.gallary.push(gallary);
         return gallary;
       })
-      .catch((error: Response) => {
+      .catch((error: any) => {
         return Observable.throw("error when add new 123");
       });
   }
 
-  updateGallary(id: number, liked: boolean) {
+  updateGallaryLike(id: number, liked: boolean) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const body = JSON.stringify({ 'liked': liked });
-    console.log(body);
-    // console.log(gallary);
     return this.http.put(this.url + '/gallaries/' + id + '/like', body, { headers: headers })
-      .map((response: Response) => {
-        console.log("response", response);
+      .map((response: any) => {
         return response.json().obj;
       })
-      .catch((error: Response) => {
-        console.log("error", error);
+      .catch((error: any) => {
         return Observable.throw("error when like a photo");
+      });
+  }
+
+  updateGallary(id: number, gallary: Gallary) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const body = JSON.stringify(gallary);
+    return this.http.put(this.url + '/gallaries/' + id, body, { headers: headers })
+      .map((response: any) => {
+        return response.json().obj;
+      })
+      .catch((error: any) => {
+        return Observable.throw("error when update a photo");
       });
   }
 }

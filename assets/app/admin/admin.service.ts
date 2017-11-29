@@ -2,7 +2,7 @@ import { Http, Response, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 import { AdminUser } from '../models/admin-user';
 

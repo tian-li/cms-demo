@@ -28,7 +28,6 @@ export class GallaryListComponent implements OnInit {
         .subscribe(
           (gallary:Gallary[]) => {
             this.allItems = gallary;
-            console.log(this.gallary);
             this.setPage(1);
             this.itemsPerRow = 3
             this.rows = Array.from(Array(Math.ceil(this.pagedItems.length / this.itemsPerRow)).keys());

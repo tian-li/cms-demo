@@ -31,8 +31,6 @@ export class BlogListComponent implements OnInit {
         this.itemsPerRow = 3
         this.rows = Array.from(Array(Math.ceil(this.pagedItems.length / this.itemsPerRow)).keys());
       });
-    
-
   }
 
   setPage(page: number) {
@@ -46,5 +44,4 @@ export class BlogListComponent implements OnInit {
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
-
 }

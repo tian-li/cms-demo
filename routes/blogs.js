@@ -10,117 +10,115 @@ var hljs = require('highlight.js');
 var Blog = require('../models/blog');
 var BlogComment = require('../models/blog-comment');
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   Blog.find({})
     .sort('-lastUpdate')
-    .exec(function(err, blogs) {
-        if(err) {
-          return res.status(500).json({
-            title:'An Error Occurred',
-            error:err
-          });
-        }
-        // console.log(blogs);
-        res.status(200).json({
-          message: 'Success',
-          obj: blogs
-        });
-      });
-});
-
-// populate
-router.get('/:id', function(req, res, next) {
-  Blog.findById(req.params.id)
-    .populate('comments', ['content', 'date', 'username'])
-    .exec(function (err, blog) {
-      if(err) {
+    .exec(function (err, blogs) {
+      if (err) {
         return res.status(500).json({
-              title: 'An error occurred',
-              error: err
+          title: 'An Error Occurred',
+          error: err
         });
       }
-      if(!blog) {
-        return res.status(500).json({
-          title: 'No blog found',
-          error: {message:'blog not found'}
-        });
-      }
-      // console.log('orignal: ',blog.content);
-      
-      // blog.content = _.unescape(blog.content);
-      // console.log('unescaped: ',blog.content);
-      // blog.content=hljs.initHighlighting(blog.content).value;
       res.status(200).json({
-          message:'Success',
-          obj:blog
+        message: 'Success',
+        obj: blogs
       });
     });
 });
 
-router.post('/', function(req, res, next) {
-  //正确顺序: unescape -> hljs -> mark, get时不需要unescape
+router.get('/:id', function (req, res, next) {
+  Blog.findById(req.params.id)
+    .populate('comments', ['content', 'date', 'username'])
+    .exec(function (err, blog) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occurred',
+          error: err
+        });
+      }
+      if (!blog) {
+        return res.status(500).json({
+          title: 'No blog found',
+          error: { message: 'blog not found' }
+        });
+      }
+      res.status(200).json({
+        message: 'Success',
+        obj: blog
+      });
+    });
+});
 
-  var content = req.body.content;
-  console.log('before: ', content);
+router.post('/', function (req, res, next) {
+  //正确顺序: unescape -> hljs -> mark, get时不需要unescape
+  var content = req.body.mdcontent;
   content = _.unescape(content);
-  // console.log('after unescape: ', content);
   marked.setOptions({
     highlight: function (content) {
       return hljs.highlightAuto(content).value;
     }
   });
-  // console.log('after highlight: ', content);
   content = marked(content);
-  console.log('after marked: ', content);
-  
   var blog = new Blog({
-    title:req.body.title,
-    summary:req.body.summary,
-    content:content,
-    imageUrl:req.body.imageUrl,
+    title: req.body.title,
+    summary: req.body.summary,
+    mdcontent: req.body.mdcontent,
+    content: content,
+    imageUrl: req.body.imageUrl,
     lastUpdate: req.body.lastUpdate,
     createDate: req.body.createDate,
     tags: req.body.tags
   });
 
   blog.save(function (err, result) {
-    if(err) {
+    if (err) {
       return res.status(500).json({
         title: 'Error when saving blog',
-        error:err
+        error: err
       });
     }
     res.status(201).json({
-      message:'Saved blog',
-      obj:result
+      message: 'Saved blog',
+      obj: result
     });
   });
 });
 
 
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function (req, res, next) {
   let id = req.params.id;
+  console.log(id);
+  var content = req.body.mdcontent;
+  content = _.unescape(content);
+  marked.setOptions({
+    highlight: function (content) {
+      return hljs.highlightAuto(content).value;
+    }
+  });
+  content = marked(content);
 
-  Blog.findOneAndUpdate(id, {
-    title:req.body.title,
-    summary:req.body.summary,
-    content:req.body.content,
-    imageUrl:req.body.imageUrl,
+  Blog.findOneAndUpdate({_id: id}, {
+    title: req.body.title,
+    summary: req.body.summary,
+    mdcontent: req.body.mdcontent,
+    content: content,
+    imageUrl: req.body.imageUrl,
     lastUpdate: req.body.lastUpdate,
     createDate: req.body.createDate,
     tags: req.body.tags
-  }, function(err, result) {
-    if(err) {
-      console.log(err);
+  }, function (err, result) {
+    if (err) {
+      // console.log(err);
       return res.status(500).json({
         title: 'Error when update blog',
-        error:err
+        error: err
       });
     }
-    console.log(result);
+    // console.log(result);
     return res.status(201).json({
-      message:'updated blog',
-      obj:result
+      message: 'updated blog',
+      obj: result
     });
   });
 });

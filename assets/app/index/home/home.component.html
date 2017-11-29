@@ -10,7 +10,19 @@
   <div class="container">
     <h2 class="section-title">BLOG</h2>
     <div class="row">
-      <home-blog-item class="col-md-4" *ngFor="let blog of blogs; let i = index" [blog]="blog" [index]="i"></home-blog-item>
+      <!-- <home-blog-item class="col-md-4" *ngFor="let blog of blogs; let i = index" [blog]="blog" [index]="i"></home-blog-item> -->
+      <div class="col-md-4" *ngFor="let blog of blogs; let i = index">
+        <div class="card blog-item">
+          <div class="blog-img-container">
+            <img class="card-img-top blog-img" src="{{blog.imageUrl}}" alt="{{blog.title}}">
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{blog.title}}</h4>
+            <p class="card-text">{{blog.summary.substring(0, 100) + "..."}}</p>
+            <a [routerLink]="'./blog/'+blog.id" class="read-more">Read More &gt;&gt;</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

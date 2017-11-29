@@ -17,7 +17,6 @@ import { CommentService } from '../../../shared/comment.service';
   styleUrls: ['./blog-full.component.css']
 })
 export class BlogFullComponent implements OnInit, AfterViewInit {
-
   id: number;
   blog: Blog;
   content: string;
@@ -38,7 +37,6 @@ export class BlogFullComponent implements OnInit, AfterViewInit {
       .subscribe((blog) => {
         this.blog = blog;
         this.content = this.blog.content;
-        console.log("blog: ", this.blog);
       });
 
   }

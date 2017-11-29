@@ -3,6 +3,7 @@ export class Blog {
   public title: string;
   public summary: string;
   public content: string;
+  public mdcontent: string;
   public imageUrl: string;
   public createDate: Date;
   public lastUpdate: Date;
@@ -12,6 +13,7 @@ export class Blog {
 
   constructor(title: string,
     summary: string,
+    mdcontent: string,
     content: string,
     imageUrl: string,
     lastUpdate: Date,
@@ -22,6 +24,7 @@ export class Blog {
   ) {
     this.title = title;
     this.summary = summary;
+    this.mdcontent = mdcontent;
     this.content = content;
     this.imageUrl = imageUrl;
     this.lastUpdate = lastUpdate;

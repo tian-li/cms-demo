@@ -55,7 +55,7 @@ export class GallaryFullComponent implements OnInit {
 
   onLike() {
     this.liked = !this.liked;
-    this.glyService.updateGallary(this.id, this.liked)
+    this.glyService.updateGallaryLike(this.id, this.liked)
       .subscribe((data) => {
         this.likes = data.likes;
       });

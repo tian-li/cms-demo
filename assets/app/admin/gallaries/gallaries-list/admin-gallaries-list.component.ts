@@ -19,8 +19,6 @@ export class AdminGallariesListComponent implements OnInit {
     this.gallaryService.getGallary()
       .subscribe((gallaries: Gallary[]) => {
         this.gallaries = gallaries;
-        console.log(this.gallaries);
       });
   }
-
 }

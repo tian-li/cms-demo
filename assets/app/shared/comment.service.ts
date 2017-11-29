@@ -2,7 +2,7 @@ import { Http, Response, Headers } from "@angular/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 import { BlogComment } from '../models/blog-comment.model';
 import { GallaryComment } from '../models/gallary-comment.model';
 

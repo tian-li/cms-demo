@@ -46,6 +46,30 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+router.put('/:id', function(req, res, next) {
+  Gallary.findOneAndUpdate({_id: req.params.id}, {
+    title:req.body.title,
+    date: req.body.date,
+    city: req.body.city,
+    state: req.body.state,
+    thumb: req.body.thumb,
+    full: req.body.full
+  }, function (err, result) {
+    if (err) {
+      // console.log(err);
+      return res.status(500).json({
+        title: 'Error when update photo',
+        error: err
+      });
+    }
+    // console.log(result);
+    return res.status(201).json({
+      message: 'updated photo',
+      obj: result
+    });
+  });
+});
+
 router.put('/:id/like', function (req, res, next) {
   console.log(req.body);
   

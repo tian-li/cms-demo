@@ -15,7 +15,7 @@ import * as _ from 'lodash';
 export class AdminBlogsNewComponent implements OnInit {
   id: number;
   blog: Blog;
-  editMode: false;
+  editMode: boolean = false;
   currentTime: number;
   createDate: Date;
 
@@ -30,7 +30,7 @@ export class AdminBlogsNewComponent implements OnInit {
     this.createDate = new Date(this.currentTime);
     this.route.params
       .subscribe(
-        (params: Params) => {
+        (params: any) => {
           this.id = params['id'];
           this.editMode = (params['id'] != null);
           if (this.editMode) {
@@ -57,11 +57,11 @@ export class AdminBlogsNewComponent implements OnInit {
     } else if(form.value.tags != null && form.value.tags.length > 0) {
       newTags = form.value.tags.split(",");
     }
-    console.log(this.createDate);
     let blog = new Blog(
       _.escape(form.value.title),
       _.escape(form.value.summary),
-      _.escape(form.value.content),
+      _.escape(form.value.mdcontent),
+      _.escape(form.value.mdcontent),
       _.escape(form.value.imageUrl),
       new Date(this.currentTime), // lastUpdate
       this.createDate, // createDate
@@ -70,14 +70,10 @@ export class AdminBlogsNewComponent implements OnInit {
 
     if (this.editMode) {
       this.blogService.updateBlog(this.id, blog)
-        .subscribe(
-          data => console.log(data)
-        );
+        .subscribe();
     } else {
       this.blogService.newBlog(blog)
-        .subscribe(
-          data => console.log(data)
-        );
+        .subscribe();
     }
     form.resetForm();
     this.router.navigate(['..'],{ relativeTo: this.route });

@@ -3,7 +3,7 @@
 
   <div class="row new-line" *ngFor="let i of rows">
     <div class="col-md-4" *ngFor="let blog of pagedItems | slice:(i*itemsPerRow):(i+1)*itemsPerRow">
-      <home-blog-item [blog]="blog"></home-blog-item>
+      <blog-item [blog]="blog"></blog-item>
     </div>
   </div>
 

@@ -21,5 +21,4 @@ export class AdminBlogsListComponent implements OnInit {
         this.blogs = blogs;
       });
   }
-
 }

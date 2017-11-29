@@ -12,9 +12,9 @@ import { Gallary } from '../../../models/gallary.model';
   styleUrls: ['./admin-gallaries-new.component.css']
 })
 export class AdminGallariesNewComponent implements OnInit {
-  gallary: Gallary;
   id: number;
-  editMode: false;
+  gallary: Gallary;
+  editMode: boolean = false;
   gallaryForm: FormGroup;
 
   constructor(
@@ -33,7 +33,8 @@ export class AdminGallariesNewComponent implements OnInit {
       full: ['', Validators.required]
     });
     this.route.params
-      .subscribe((params: Params) => {
+      .subscribe(
+      (params: any) => {
         this.id = params['id'];
         this.editMode = (params['id'] != null);
         if (this.editMode) {
@@ -55,18 +56,20 @@ export class AdminGallariesNewComponent implements OnInit {
           full: [this.gallary.full, Validators.required]
         });
       });
-
   }
 
   onSubmit({ value, valid }: { value: Gallary, valid: boolean }) {
     if (valid) {
-      this.gallaryService.newGallary(value)
-        .subscribe(
-        data => console.log(data)
-        );
+      if (this.editMode) {
+        this.gallaryService.updateGallary(this.id, value)
+          .subscribe();
+      } else {
+        this.gallaryService.newGallary(value)
+          .subscribe();
+      }
       this.gallaryForm.reset();
+      this.router.navigate(['..'],{ relativeTo: this.route });
     }
-
   }
 
   onClear() {

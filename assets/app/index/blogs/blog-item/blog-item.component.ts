@@ -4,7 +4,7 @@ import { Blog } from '../../../models/blog.model';
 
 
 @Component({
-  selector: 'home-blog-item',
+  selector: 'blog-item',
   templateUrl: './blog-item.component.html',
   styleUrls: ['./blog-item.component.css']
 })
