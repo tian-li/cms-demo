@@ -1,0 +1,59 @@
+.jumbotron-billboard .img {
+    margin-bottom: 0px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.jumbotron {
+    height: calc(100vh - 51px);
+    position: relative;
+    padding: 0px;
+    margin: 0;
+    /* margin-bottom: 80px; */
+}
+
+.jumbotron .container {
+    z-index: 2;
+    position: relative;
+    z-index: 2;
+}
+
+.jumbotron-text {
+    z-index: 3;
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+section.section-blog,
+section.section-about {
+    background: rgb(244, 244, 244);
+}
+
+/* ========== gallary section =========== */
+
+.gallary-showcase {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+
+.gallary-showcase home-photo-item {
+    display: block;
+    float: left;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+}

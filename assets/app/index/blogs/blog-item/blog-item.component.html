@@ -1,0 +1,10 @@
+<div class="card blog-item">
+  <div class="blog-img-container">
+    <img class="card-img-top blog-img" src="{{blog.imageUrl}}" alt="Card image cap">
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{blog.title}}</h4>
+    <p class="card-text">{{blog.summary.substring(0, 100) + "..."}}</p>
+    <a [routerLink]="'./'+blog.id" class="read-more">Read More &gt;&gt;</a>
+  </div>
+</div>

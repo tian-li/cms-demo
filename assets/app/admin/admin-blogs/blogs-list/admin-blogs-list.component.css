@@ -1,0 +1,12 @@
+a.list-item{
+  display: inline-block;
+  font-size: 20px;
+}
+.d-flex {
+  border-bottom: 1px solid rgb(114, 114, 114);
+  background: #c2c2c2
+}
+
+a.active-link{
+  color: #47c9e5;
+}

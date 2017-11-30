@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSignup(adminUser)" [formGroup]="adminUser">
+  <div class="form-group">
+    <label for="username">Username: </label>
+    <input type="text" class="form-control" id="username" formControlName="username">
+  </div>
+  <div class="form-group">
+    <label for="email">Email: </label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password: </label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+  </div>
+  <button class="btn btn-primary btn-block" type="submit" [disabled]="adminUser.invalid">Sign up</button>
+</form>

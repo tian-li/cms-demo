@@ -1,0 +1,77 @@
+<!-- <div class="containcer"> -->
+  <!-- 所有开始 -->
+  <!-- <div class="row"> -->
+    <!-- 文章开始 -->
+    <div class="d-flex flex-column blog-full-container">
+      <div class="d-flex justify-content-center">
+        <div class="blog-full-title">
+          <h1>{{blog?.title}}</h1>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="blog-full-meta">
+          <i class="fa fa-calendar-o"></i>Aug 9, 2017
+          <i class="fa fa-hashtag"></i>
+          <!-- <span *ngFor=" let tag of blog?.tags">{{tag}} </span> -->
+          <span>{{blog?.tags.join(', ')}}</span>
+        </div>
+      </div>
+      <div class="flex-column">
+        <article class="blog-content" [innerHTML]="blog?.content"></article>
+      </div>
+    </div>
+  <!-- </div> -->
+  <!-- 文章结束 -->
+
+  <div class="flex-column">
+    <!-- 评论开始 -->
+
+    <div class="comment-container">
+      <!-- 评论盒子开始 -->
+      <div class="flex-column">
+        <!-- 评论标题开始 -->
+        <div class="comment-title">
+          共{{blog?.comments.length}}条评论
+        </div>
+      </div>
+      <!-- 评论标题结束 -->
+      <div class="flex-column">
+        <!-- 评论列表开始 -->
+        <div class="display-comments">
+          <div class="comment-item" *ngFor="let comment of blog?.comments">
+            <div class="comment-meta">
+              <span class="comment-username">{{comment?.username}}</span>
+              <span class="comment-date"> · {{comment?.date | date}}</span>
+            </div>
+            <div class="comment-content" [innerHTML]="comment?.content"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 评论列表结束 -->
+      <div class="flex-column">
+        <!-- 添加评论开始 -->
+        <div class="new-comment">
+          <div class="flex-column">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+              <div class="flex-column">
+                <input class="form-control" type="text" id="username" [ngModel]="comment?.username" name="username" placeholder="昵称(最多50个字符)"
+                  maxlength="50" required>
+              </div>
+              <div class="flex-column">
+                <textarea class="form-control" type="text" id="content" [ngModel]="comment?.content" name="content" placeholder="评论内容(最多1000个字符)"
+                  rows="10" cols="50" maxlength="1000" required></textarea>
+              </div>
+              <div class="flex-column ml-auto">
+                <button class="btn btn-success" type="submit">发布评论</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- 添加评论结束 -->
+    </div>
+    <!-- 评论盒子结束 -->
+  </div>
+  <!-- 评论结束 -->
+<!-- </div> -->
+<!-- 所有结束 -->

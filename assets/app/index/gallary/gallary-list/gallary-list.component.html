@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="section-title">Gallary</h2>
+
+  <div class="row new-line" *ngFor="let i of rows">
+    <div class="col-md-4" *ngFor=" let g of pagedItems| slice:(i*itemsPerRow):(i+1)*itemsPerRow">
+      <div class="gallary-item">
+        <img src="{{g.thumb}}" alt="{{g.title}}">
+        <a [routerLink]="[g._id]">
+          <div class="overlay">
+            <div class="text">
+              <i class="fa fa-heart"></i>{{g.likes}}
+              <i class="fa fa-comment"></i>{{g.comments.length}}
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center page-nav">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(1)">First</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" class="page-item" [ngClass]="{active:pager.currentPage === page}">
+        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+      </li>
+    </ul>
+  </div>
+</div>
