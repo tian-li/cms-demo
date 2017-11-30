@@ -30,7 +30,6 @@ export class CommentService {
         return blogComment;
       })
       .catch((error: Response) => {
-        console.log(error);
         return Observable.throw("error when add new blog comment");
       });
   }
@@ -52,7 +51,6 @@ export class CommentService {
         return gallaryComment;
       })
       .catch((error: Response) => {
-        console.log(error);
         return Observable.throw("error when add new gallary comment");
       });
   }

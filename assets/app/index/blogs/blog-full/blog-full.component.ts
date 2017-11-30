@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from "@angular/forms";
 import { DatePipe } from '@angular/common';
@@ -16,7 +16,7 @@ import { CommentService } from '../../../shared/comment.service';
   templateUrl: './blog-full.component.html',
   styleUrls: ['./blog-full.component.css']
 })
-export class BlogFullComponent implements OnInit, AfterViewInit {
+export class BlogFullComponent implements OnInit {
   id: number;
   blog: Blog;
   content: string;
@@ -41,10 +41,6 @@ export class BlogFullComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
-    hljs.initHighlightingOnLoad();
-  }
-
   onSubmit(form: NgForm) {
     const blogComment = new BlogComment(
       form.value.content,
@@ -55,5 +51,4 @@ export class BlogFullComponent implements OnInit, AfterViewInit {
         this.blog.comments.push(data);
       });
   }
-
 }

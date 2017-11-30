@@ -7,8 +7,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false,
-    "outDir": "./public/js/app"
+    "noImplicitAny": false
   },
   "typeRoots": [
     "node_modules/@types"
@@ -17,16 +16,16 @@
     "es5",
     "dom"
   ],
-  "files": [
-    "assets/app/app.module.ts",
-    "assets/app/admin/admin.module.ts",
-    "assets/app/admin/admin-user/admin-user.module.ts",
-    "assets/app/admin/admin-blogs/admin-blogs.module.ts",
-    "assets/app/admin/admin-gallaries/admin-gallaries.module.ts",
-    "assets/app/index/blogs/blogs.module.ts",
-    "assets/app/index/gallary/gallary.module.ts",
-    "assets/app/main.aot.ts"
-  ],
+  // "files": [
+  //   "assets/app/app.module.ts",
+  //   "assets/app/admin/admin.module.ts",
+  //   "assets/app/admin/admin-user/admin-user.module.ts",
+  //   "assets/app/admin/admin-blogs/admin-blogs.module.ts",
+  //   "assets/app/admin/admin-gallaries/admin-gallaries.module.ts",
+  //   "assets/app/index/blogs/blogs.module.ts",
+  //   "assets/app/index/gallary/gallary.module.ts",
+  //   "assets/app/main.aot.ts"
+  // ],
   "angularCompilerOptions": {
     "skipMetadataEmit": true
   }

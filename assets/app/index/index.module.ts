@@ -12,8 +12,6 @@ import { PhotoItemComponent } from './home/photo-item/photo-item.component';
 
 import { CommentService } from '../shared/comment.service';
 
-import { BlogsModule } from './blogs/blogs.module';
-
 import { IndexRoutingModule } from './index-routing.module';
 
 @NgModule({
@@ -28,8 +26,7 @@ import { IndexRoutingModule } from './index-routing.module';
   imports: [
     FormsModule,
     CommonModule,
-    IndexRoutingModule,
-    BlogsModule
+    IndexRoutingModule
   ],
   providers: [CommentService]
 })

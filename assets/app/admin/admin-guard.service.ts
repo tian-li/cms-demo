@@ -25,7 +25,6 @@ export class AdminGuard implements CanActivate, CanActivateChild {
             return true;
           }else{
             this.router.navigate(['admin/user']);
-            console.log('you are not logged in!');
           }
         }
       );

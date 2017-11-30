@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
     this.blogsService.getBlogs()
       .subscribe((blogs: Blog[]) => {
         this.blogs = blogs;
-        console.log(blogs);
         this.blogs = this.blogs.slice(0, 3);
       });
 

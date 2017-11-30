@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index.component';
 
 const indexRoutes: Routes = [
-  { path: 'index', component: IndexComponent, children:[
+  { path: '', component: IndexComponent, children:[
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'gallary', loadChildren:'./gallary/gallary.module#GallaryModule'},

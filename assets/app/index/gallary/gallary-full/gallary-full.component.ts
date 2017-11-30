@@ -45,7 +45,6 @@ export class GallaryFullComponent implements OnInit {
       form.value.content,
       form.value.username,
       this.id);
-    console.log(gallaryComment);
     this.commentService.newGallaryComment(gallaryComment)
       .subscribe((data) => {
         this.photo.comments.push(data);

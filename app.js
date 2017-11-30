@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cloudinary = require('cloudinary');
-// var marked = require('marked');
 
 var blogCommentRoutes = require('./routes/blog-comment');
 var gallaryCommentRoutes = require('./routes/gallary-comment');
@@ -17,8 +16,8 @@ var adminUserRoutes = require('./routes/adminUser');
 var appRoutes = require('./routes/app');
 
 var app = express();
-mongoose.connect('localhost:27017/cms');
-// mongoose.connect('tian:93899389@ds031617.mlab.com:31617/cms');
+// mongoose.connect('localhost:27017/cms');
+mongoose.connect('tian:93899389@ds031617.mlab.com:31617/cms');
 
 cloudinary.config({ 
   cloud_name: 'dho1fmz51', 
