@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
-// var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 
 var Blog = require('../models/blog');
 var BlogComment = require('../models/blog-comment');
 
 router.post('/', function(req, res, next) {
-  
   Blog.findById(req.body.blogId, function(err, blog) {
     if (err) {
       return res.status(500).json({
@@ -15,23 +13,25 @@ router.post('/', function(req, res, next) {
         error: err
       });
     }
+
     var blogComment = new BlogComment({
       content: req.body.content,
       username: req.body.username,
-      blogId: blog
+      blogId: blog._id
     });
-    blogComment.save(function (err, result) {
-      if(err) {
+
+    blogComment.save(function(err, result) {
+      if (err) {
         return res.status(500).json({
           title: 'Error when saving blog',
-          error:err
+          error: err
         });
       }
-      blog.comments.push(blogComment);
+      blog.comments.push(result._id);
       blog.save();
       res.status(201).json({
-        message:'Saved blogComment',
-        obj:result
+        message: 'Saved blogComment',
+        obj: result
       });
     });
   });

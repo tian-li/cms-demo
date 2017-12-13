@@ -6,14 +6,13 @@ var marked = require('marked');
 var _ = require('lodash');
 var hljs = require('highlight.js');
 
-
 var Blog = require('../models/blog');
 var BlogComment = require('../models/blog-comment');
 
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
   Blog.find({})
     .sort('-lastUpdate')
-    .exec(function (err, blogs) {
+    .exec(function(err, blogs) {
       if (err) {
         return res.status(500).json({
           title: 'An Error Occurred',
@@ -27,10 +26,10 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/:id', function(req, res, next) {
   Blog.findById(req.params.id)
     .populate('comments', ['content', 'date', 'username'])
-    .exec(function (err, blog) {
+    .exec(function(err, blog) {
       if (err) {
         return res.status(500).json({
           title: 'An error occurred',
@@ -50,12 +49,14 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', function(req, res, next) {
   //正确顺序: unescape -> hljs -> mark, get时不需要unescape
   var content = req.body.mdcontent;
   content = _.unescape(content);
+  var mdcontent = content;
+
   marked.setOptions({
-    highlight: function (content) {
+    highlight: function(content) {
       return hljs.highlightAuto(content).value;
     }
   });
@@ -63,7 +64,7 @@ router.post('/', function (req, res, next) {
   var blog = new Blog({
     title: req.body.title,
     summary: req.body.summary,
-    mdcontent: req.body.mdcontent,
+    mdcontent: mdcontent,
     content: content,
     imageUrl: req.body.imageUrl,
     lastUpdate: req.body.lastUpdate,
@@ -71,7 +72,7 @@ router.post('/', function (req, res, next) {
     tags: req.body.tags
   });
 
-  blog.save(function (err, result) {
+  blog.save(function(err, result) {
     if (err) {
       return res.status(500).json({
         title: 'Error when saving blog',
@@ -85,42 +86,43 @@ router.post('/', function (req, res, next) {
   });
 });
 
-
-router.put('/:id', function (req, res, next) {
+router.put('/:id', function(req, res, next) {
   let id = req.params.id;
-  console.log(id);
   var content = req.body.mdcontent;
   content = _.unescape(content);
+  var mdcontent = content;
   marked.setOptions({
-    highlight: function (content) {
+    highlight: function(content) {
       return hljs.highlightAuto(content).value;
     }
   });
   content = marked(content);
 
-  Blog.findOneAndUpdate({_id: id}, {
-    title: req.body.title,
-    summary: req.body.summary,
-    mdcontent: req.body.mdcontent,
-    content: content,
-    imageUrl: req.body.imageUrl,
-    lastUpdate: req.body.lastUpdate,
-    createDate: req.body.createDate,
-    tags: req.body.tags
-  }, function (err, result) {
-    if (err) {
-      // console.log(err);
-      return res.status(500).json({
-        title: 'Error when update blog',
-        error: err
+  Blog.findOneAndUpdate(
+    { _id: id },
+    {
+      title: req.body.title,
+      summary: req.body.summary,
+      mdcontent: mdcontent,
+      content: content,
+      imageUrl: req.body.imageUrl,
+      lastUpdate: req.body.lastUpdate,
+      createDate: req.body.createDate,
+      tags: req.body.tags
+    },
+    function(err, result) {
+      if (err) {
+        return res.status(500).json({
+          title: 'Error when update blog',
+          error: err
+        });
+      }
+      return res.status(201).json({
+        message: 'updated blog',
+        obj: result
       });
     }
-    // console.log(result);
-    return res.status(201).json({
-      message: 'updated blog',
-      obj: result
-    });
-  });
+  );
 });
 
 module.exports = router;

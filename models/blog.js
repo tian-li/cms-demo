@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var BlogComment = require('./blog-comment');
 
 var schema = new Schema({
   title: { type: String, required: true },
@@ -11,7 +10,7 @@ var schema = new Schema({
   lastUpdate: { type: Date },
   createDate: { type: Date },
   comments: [{
-    type: Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'BlogComment'
   }],
   tags: [{ type: String }]

@@ -9,12 +9,15 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogFullComponent } from './blog-full/blog-full.component';
 import { BlogItemComponent } from './blog-item/blog-item.component';
 
+import { HighlightDirective } from './highlight.directive';
+
 @NgModule({
   declarations: [
     BlogsComponent,
     BlogListComponent,
     BlogFullComponent,
-    BlogItemComponent
+    BlogItemComponent,
+    HighlightDirective
   ],
   imports: [
     CommonModule,
