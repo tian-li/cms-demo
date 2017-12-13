@@ -8,7 +8,7 @@ export class Blog {
   public createDate: Date;
   public lastUpdate: Date;
   public id?: string;
-  public comments?: string[];
+  public comments?: number[];
   public tags?: string[];
 
   constructor(title: string,
@@ -20,7 +20,7 @@ export class Blog {
     createDate: Date,
     tags?: string[],
     id?: string,
-    comments?: string[]
+    comments?: number[]
   ) {
     this.title = title;
     this.summary = summary;

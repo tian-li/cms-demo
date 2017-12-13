@@ -14,7 +14,6 @@ router.get('/', function (req, res, next) {
         error: err
       });
     }
-    // console.log(gallary);
     res.status(200).json({
       message: 'Success',
       obj: gallary
@@ -56,13 +55,11 @@ router.put('/:id', function(req, res, next) {
     full: req.body.full
   }, function (err, result) {
     if (err) {
-      // console.log(err);
       return res.status(500).json({
         title: 'Error when update photo',
         error: err
       });
     }
-    // console.log(result);
     return res.status(201).json({
       message: 'updated photo',
       obj: result
@@ -70,9 +67,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-router.put('/:id/like', function (req, res, next) {
-  console.log(req.body);
-  
+router.put('/:id/like', function (req, res, next) {  
   Gallary.findById(req.params.id, function (err, gallary) {
     if (err) {
       return res.status(500).json({
